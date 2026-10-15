@@ -1,0 +1,28 @@
+{
+  "name": "הארנק שלי",
+  "short_name": "הארנק שלי",
+  "description": "מעקב הוצאות חודשי",
+  "lang": "he",
+  "dir": "rtl",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b6b63",
+  "theme_color": "#0b6b63",
+  "icons": [
+    {
+      "src": "https://lh3.googleusercontent.com/d/1BVDe1-LxMy6rADSj9UJD8-6E5N2WnUxV=s192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "https://lh3.googleusercontent.com/d/1BVDe1-LxMy6rADSj9UJD8-6E5N2WnUxV=s512",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
