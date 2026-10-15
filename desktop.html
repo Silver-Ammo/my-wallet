@@ -1,0 +1,2250 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>הארנק שלי</title>
+<link rel="icon" href="https://lh3.googleusercontent.com/d/1BVDe1-LxMy6rADSj9UJD8-6E5N2WnUxV=s192">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b6b63">
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts: Heebo & Rubik for crisp Hebrew & numeric typography -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- Phosphor Icons -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script>
+tailwind.config = {
+darkMode: 'class',
+theme: {
+extend: {
+fontFamily: {
+sans: ['Heebo', 'Rubik', 'sans-serif'],
+display: ['Rubik', 'Heebo', 'sans-serif'],
+},
+colors: {
+brand: {
+50: '#eef2ff',
+100: '#e0e7ff',
+200: '#c7d2fe',
+500: '#6366f1',
+600: '#4f46e5',
+700: '#4338ca',
+900: '#312e81',
+}
+}
+}
+}
+}
+</script>
+<style>
+body {
+font-family: 'Heebo', sans-serif;
+-webkit-tap-highlight-color: transparent;
+}
+.font-num {
+font-family: 'Rubik', sans-serif;
+font-variant-numeric: tabular-nums;
+}
+::-webkit-scrollbar {
+width: 6px;
+height: 6px;
+}
+::-webkit-scrollbar-track {
+background: transparent;
+}
+::-webkit-scrollbar-thumb {
+background: rgba(148, 163, 184, 0.4);
+border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+background: rgba(100, 116, 139, 0.6);
+}
+@keyframes slideUpSheet {
+from { transform: translateY(100%); opacity: 0.5; }
+to { transform: translateY(0); opacity: 1; }
+}
+@keyframes fadeInScale {
+from { transform: scale(0.96); opacity: 0; }
+to { transform: scale(1); opacity: 1; }
+}
+.animate-sheet {
+animation: slideUpSheet 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@media (min-width: 768px) {
+.animate-sheet {
+animation: fadeInScale 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+}
+.category-card {
+transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.category-card:hover {
+transform: translateY(-3px);
+}
+.category-card:active {
+transform: scale(0.985);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type="number"] {
+-moz-appearance: textfield;
+}
+/* Custom range slider for efficiency simulator */
+input[type="range"].sim-slider {
+-webkit-appearance: none;
+appearance: none;
+height: 8px;
+border-radius: 999px;
+background: #e2e8f0;
+outline: none;
+}
+.dark input[type="range"].sim-slider {
+background: #334155;
+}
+input[type="range"].sim-slider::-webkit-slider-thumb {
+-webkit-appearance: none;
+appearance: none;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: #4f46e5;
+cursor: pointer;
+border: 3px solid #ffffff;
+box-shadow: 0 2px 6px rgba(79, 70, 229, 0.4);
+transition: transform 0.15s ease;
+}
+input[type="range"].sim-slider::-webkit-slider-thumb:hover {
+transform: scale(1.15);
+}
+html,body{overflow-x:hidden;max-width:100%;}
+@media (max-width:640px){input,select,textarea{font-size:16px !important;}}
+.pb-safe{padding-bottom:max(0.5rem,env(safe-area-inset-bottom));}
+</style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen pb-28 md:pb-14 transition-colors duration-200 selection:bg-indigo-500 selection:text-white">
+<!-- Top Sticky Header -->
+<header class="sticky top-0 z-30 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+<div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2">
+<!-- Brand Logo & Title -->
+<div class="flex items-center gap-2.5 sm:gap-3">
+<div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 shrink-0">
+<i class="ph-fill ph-wallet text-xl sm:text-2xl"></i>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-base sm:text-xl font-extrabold tracking-tight whitespace-nowrap text-slate-900 dark:text-white leading-tight">
+הארנק שלי
+</h1>
+<span class="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+<i class="ph-fill ph-brain"></i> מודל לומד
+</span>
+</div>
+<p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
+מעקב הוצאות, התאמת ערכים והתייעלות כלכלית לאורך זמן
+</p>
+</div>
+</div>
+<!-- Month Selector Pill -->
+<div class="flex items-center bg-slate-100 dark:bg-slate-800/90 p-1 rounded-2xl border border-slate-200/70 dark:border-slate-700/70">
+<button onclick="changeMonth(-1)" title="חודש קודם" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition">
+<i class="ph-bold ph-caret-right text-base"></i>
+</button>
+<div class="px-2 sm:px-4 text-center min-w-[84px] sm:min-w-[135px]">
+<span id="currentMonthLabel" class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 block">אוקטובר 2026</span>
+</div>
+<button onclick="changeMonth(1)" title="חודש הבא" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 hover:shadow-sm transition">
+<i class="ph-bold ph-caret-left text-base"></i>
+</button>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-1.5 sm:gap-2">
+<button onclick="scrollToEfficiencySection()" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 to-teal-600 text-white shadow-sm shadow-emerald-500/20 hover:from-emerald-700 hover:to-teal-700 transition">
+<i class="ph-fill ph-trend-down text-base"></i>
+<span class="hidden md:inline">מנוע התייעלות</span>
+</button>
+<button onclick="openSimulatorModal()" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-50 text-indigo-700 dark:bg-indigo-950/80 dark:text-indigo-300 border border-indigo-200/70 dark:border-indigo-800/70 hover:bg-indigo-100 transition">
+<i class="ph-bold ph-sliders-horizontal text-base"></i>
+<span class="hidden lg:inline">התאמת ערכים וחיסכון</span>
+</button>
+<button onclick="openBasketModal()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 transition">
+<i class="ph-bold ph-shopping-basket text-base text-indigo-600 dark:text-indigo-400"></i>
+<span class="hidden xl:inline">סל קטגוריות</span>
+</button>
+<button onclick="exportToCSV()" title="ייצוא לאקסל (CSV)" class="p-2 rounded-xl text-xs sm:text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition flex items-center">
+<i class="ph-bold ph-download-simple text-base sm:text-lg text-emerald-600 dark:text-emerald-400"></i>
+</button>
+<button onclick="toggleTheme()" title="מצב כהה / בהיר" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition">
+<i id="themeIcon" class="ph-fill ph-moon text-lg"></i>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-7 space-y-6 sm:space-y-8">
+<!-- Smart Free-Text Expense Bar & Quick Actions -->
+<section class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm space-y-3">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="w-7 h-7 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
+<i class="ph-fill ph-lightning"></i>
+</span>
+<h2 class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">
+הזנה מהירה בטקסט חופשי או התאמת נתונים
+</h2>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="copyFixedFromPrevMonth()" class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-indigo-50 hover:text-indigo-600 dark:hover:bg-slate-700 transition flex items-center gap-1.5">
+<i class="ph-bold ph-arrows-clockwise text-indigo-500"></i>
+<span>ייבוא קבועות מחודש קודם</span>
+</button>
+<button onclick="openDemoResetModal()" class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-rose-600 transition flex items-center gap-1">
+<i class="ph-bold ph-database"></i>
+<span>נתונים / איפוס</span>
+</button>
+</div>
+</div>
+<form onsubmit="handleQuickTextParse(event)" class="flex flex-col sm:flex-row gap-2.5">
+<div class="relative flex-1">
+<i class="ph-bold ph-magic-wand absolute right-3.5 top-1/2 -translate-y-1/2 text-indigo-500 text-lg"></i>
+<input id="quickTextInput" type="text" placeholder="הקלד חופשי, למשל: קניות בסופר 420, דלק 280, בילויים 150..."
+class="w-full pr-10 pl-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 transition">
+</div>
+<button type="submit" class="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-sm shadow-indigo-500/20 transition flex items-center justify-center gap-2 shrink-0">
+<i class="ph-bold ph-plus-circle text-lg"></i>
+<span>נתח והוסף הוצאות</span>
+</button>
+</form>
+</section>
+<!-- KPI Summary Cards (4 Cards: Total Spent, Monthly Budget, Remaining/Diff, Efficiency Score) -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+<!-- Card 1: Total Spent in Selected Month -->
+<div class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">סה"כ הוצאות החודש</span>
+<div class="w-9 h-9 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+<i class="ph-bold ph-receipt text-lg"></i>
+</div>
+</div>
+<div class="mt-3">
+<div id="kpiTotalSpent" class="text-2xl sm:text-3xl font-extrabold font-num text-slate-900 dark:text-white">₪0</div>
+<div id="kpiMonthVsAvg" class="text-[11px] sm:text-xs font-semibold mt-1 flex items-center gap-1 text-slate-500">
+<span>לעומת ממוצע רב-חודשי</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Total Monthly Budget Target (Editable) -->
+<div onclick="openBudgetEditModal()" class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between cursor-pointer hover:border-indigo-400 transition group">
+<div class="flex items-center justify-between">
+<span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 flex items-center gap-1">
+תקציב יעד חודשי
+<i class="ph-bold ph-pencil-simple text-xs text-indigo-500 group-hover:scale-125 transition"></i>
+</span>
+<div class="w-9 h-9 rounded-xl bg-violet-50 dark:bg-violet-950/60 text-violet-600 dark:text-violet-400 flex items-center justify-center">
+<i class="ph-bold ph-target text-lg"></i>
+</div>
+</div>
+<div class="mt-3">
+<div id="kpiBudget" class="text-2xl sm:text-3xl font-extrabold font-num text-slate-900 dark:text-white">₪14,000</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full mt-2 overflow-hidden">
+<div id="kpiBudgetBar" class="bg-indigo-600 h-full rounded-full transition-all duration-500" style="width: 0%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: Remaining Budget / Balance -->
+<div class="bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-3xl border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400">יתרה פנויה בתקציב</span>
+<div id="kpiRemainingIconWrap" class="w-9 h-9 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+<i class="ph-bold ph-piggy-bank text-lg"></i>
+</div>
+</div>
+<div class="mt-3">
+<div id="kpiRemaining" class="text-2xl sm:text-3xl font-extrabold font-num text-emerald-600 dark:text-emerald-400">₪0</div>
+<div id="kpiRemainingSub" class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-1">
+0% מנוצל מהתקציב
+</div>
+</div>
+</div>
+<!-- Card 4: Learning Model Efficiency Potential -->
+<div onclick="scrollToEfficiencySection()" class="bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-4 sm:p-5 rounded-3xl shadow-md shadow-emerald-600/15 flex flex-col justify-between cursor-pointer hover:brightness-105 transition">
+<div class="flex items-center justify-between">
+<span class="text-xs sm:text-sm font-bold text-emerald-100">פוטנציאל התייעלות זוהה</span>
+<div class="w-9 h-9 rounded-xl bg-white/15 flex items-center justify-center text-white">
+<i class="ph-fill ph-sparkle text-lg"></i>
+</div>
+</div>
+<div class="mt-3">
+<div id="kpiEfficiencyPotential" class="text-2xl sm:text-3xl font-extrabold font-num">₪0<span class="text-sm font-normal opacity-85">/חודש</span></div>
+<div id="kpiEfficiencyYearly" class="text-[11px] sm:text-xs text-emerald-100 font-medium mt-1 flex items-center gap-1">
+<span>לחץ לצפייה בממצאי המודל הלומד</span>
+<i class="ph-bold ph-arrow-left"></i>
+</div>
+</div>
+</div>
+</section>
+<!-- Collapsible / Interactive Basket Selector right on the Homepage -->
+<section class="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm overflow-hidden">
+<div class="p-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/80 text-indigo-600 dark:text-indigo-400 flex items-center justify-center text-xl">
+🧺
+</div>
+<div>
+<h2 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+<span>סל ההוצאות שלי</span>
+<span id="activeBasketCountBadge" class="text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300">10 פעילות</span>
+</h2>
+<p class="text-xs text-slate-500 dark:text-slate-400">
+לחץ על הקטגוריות שרלוונטיות עבורך כדי להציג או להסתיר אותן מלוח המעקב, או הוסף קטגוריה משלך
+</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="openNewCategoryModal()" class="text-xs sm:text-sm font-bold px-3.5 py-2 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition flex items-center gap-1.5 shadow-sm">
+<i class="ph-bold ph-plus"></i>
+<span>קטגוריה חדשה</span>
+</button>
+<button onclick="toggleInlineBasket()" id="toggleBasketBtn" class="text-xs sm:text-sm font-semibold px-3.5 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition flex items-center gap-1.5">
+<span id="toggleBasketBtnText">הצג/ערוך סל מלא</span>
+<i id="toggleBasketIcon" class="ph-bold ph-caret-down"></i>
+</button>
+</div>
+</div>
+<!-- Quick Horizontal Pill Strip (Always visible for fast toggling) -->
+<div class="px-4 sm:px-6 py-3.5 bg-slate-50/70 dark:bg-slate-900/50">
+<div id="quickBasketPills" class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+<!-- Populated via JS -->
+</div>
+</div>
+<!-- Expanded Categorized Basket Drawer -->
+<div id="expandedBasketDrawer" class="hidden p-4 sm:p-6 border-t border-slate-200/70 dark:border-slate-800 space-y-5 bg-white dark:bg-slate-900">
+<div id="groupedBasketContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Populated via JS -->
+</div>
+</div>
+</section>
+<!-- Active Categories Grid Section -->
+<section class="space-y-4">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div>
+<h2 class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+<span>כרטיסיות ההוצאות שלך</span>
+<span class="text-xs font-normal text-slate-500 dark:text-slate-400">(לחץ על כרטיסייה להוספה או להתאמת ערך ההוצאות והיעד)</span>
+</h2>
+</div>
+<div class="flex items-center gap-2">
+<button onclick="openSimulatorModal()" class="text-xs sm:text-sm font-bold text-indigo-600 dark:text-indigo-400 hover:underline flex items-center gap-1">
+<i class="ph-bold ph-sliders"></i>
+<span>התאמת כל יעדי הקטגוריות בבת אחת</span>
+</button>
+</div>
+</div>
+<!-- Grid of Active Category Cards -->
+<div id="activeCategoriesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+<!-- Populated dynamically via JS -->
+</div>
+</section>
+<!-- LONGITUDINAL LEARNING & EFFICIENCY ENGINE SECTION -->
+<section id="efficiencyEngineSection" class="bg-gradient-to-b from-white to-slate-50/90 dark:from-slate-900 dark:to-slate-900/70 rounded-3xl border-2 border-emerald-500/30 dark:border-emerald-500/25 shadow-lg overflow-hidden">
+<!-- Engine Header -->
+<div class="p-5 sm:p-7 bg-gradient-to-l from-emerald-600/10 via-teal-500/5 to-transparent border-b border-slate-200/80 dark:border-slate-800 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div class="flex items-start sm:items-center gap-3.5">
+<div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white flex items-center justify-center shadow-md shadow-emerald-600/25 shrink-0">
+<i class="ph-fill ph-brain text-2xl sm:text-3xl"></i>
+</div>
+<div>
+<div class="flex flex-wrap items-center gap-2">
+<h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 dark:text-white">
+מנוע למידה והתייעלות כלכלית לאורך זמן
+</h2>
+<span id="learningMonthsBadge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300">
+מנתח 4 חודשי פעילות
+</span>
+</div>
+<p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 mt-1">
+המודל לומד את דפוסי ההוצאות שלך לאורך החודשים, מזהה "זחילת הוצאות", חריגות מהממוצע הרב-חודשי והזדמנויות מעשיות לחיסכון — ומאפשר לך לעדכן את הערכים בלחיצה.
+</p>
+</div>
+</div>
+<!-- Efficiency Score Pill & Simulator Trigger -->
+<div class="flex items-center gap-3 self-start lg:self-center">
+<div class="bg-white dark:bg-slate-800 px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center gap-3 shadow-sm">
+<div class="text-right">
+<span class="text-[11px] text-slate-500 dark:text-slate-400 block">ציון התייעלות</span>
+<span id="efficiencyScoreValue" class="text-lg sm:text-xl font-extrabold font-num text-emerald-600 dark:text-emerald-400">82/100</span>
+</div>
+<div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/70 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+<i class="ph-fill ph-seal-check text-2xl"></i>
+</div>
+</div>
+<button onclick="openSimulatorModal()" class="px-4 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs sm:text-sm shadow-sm shadow-indigo-500/20 transition flex items-center gap-2">
+<i class="ph-bold ph-sliders-horizontal text-lg"></i>
+<span>סימולטור התאמת הוצאות</span>
+</button>
+</div>
+</div>
+<!-- Main Content of Learning Engine: 2 Columns on Desktop -->
+<div class="p-5 sm:p-7 grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Right Column (7 cols): Actionable Efficiency Recommendations learned from history -->
+<div class="lg:col-span-7 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+<i class="ph-fill ph-lightbulb-filament text-amber-500 text-xl"></i>
+<span>איפה אפשר להתייעל? ממצאי המודל והמלצות להתאמה</span>
+</h3>
+<button onclick="applyAllEfficiencyRecommendations()" class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300 hover:bg-emerald-200 transition flex items-center gap-1">
+<i class="ph-bold ph-check-circle"></i>
+<span>אמץ את כל יעדי ההתייעלות</span>
+</button>
+</div>
+<!-- Dynamic List of Learned Insights -->
+<div id="learnedInsightsList" class="space-y-3.5">
+<!-- Populated via JS Learning Model -->
+</div>
+</div>
+<!-- Left Column (5 cols): Multi-Month Trend Chart & Category Anomaly Table -->
+<div class="lg:col-span-5 space-y-5">
+<!-- Multi-Month Spending Bar Comparison -->
+<div class="bg-white dark:bg-slate-800/70 p-4 sm:p-5 rounded-2xl border border-slate-200/80 dark:border-slate-700/80 space-y-4">
+<div class="flex items-center justify-between">
+<div>
+<h4 class="text-sm sm:text-base font-bold text-slate-800 dark:text-slate-100">מגמת הוצאות לאורך זמן</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400">השוואת החודשים האחרונים לעומת הממוצע שלך</p>
+</div>
+<span id="multiMonthAvgLabel" class="text-xs font-bold font-num px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">
+ממוצע: ₪0
+</span>
+</div>
+<!-- Bar Chart Container -->
+<div id="multiMonthTrendChart" class="h-44 flex items-end justify-between gap-2 sm:gap-4 pt-6 pb-2 px-2 border-b border-slate-200 dark:border-slate-700">
+<!-- Populated via JS -->
+</div>
+<!-- Category Trend Comparison (Current Month vs Historical Average) -->
+<div class="space-y-2 pt-1">
+<div class="flex items-center justify-between text-xs font-bold text-slate-500 dark:text-slate-400">
+<span>קטגוריה במעקב</span>
+<span>החודש מול ממוצע רב-חודשי</span>
+</div>
+<div id="categoryHistoricalComparisonList" class="space-y-2 max-h-52 overflow-y-auto pl-1">
+<!-- Populated via JS -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Split: Category Breakdown Donut & Editable Recent Expenses List -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Donut Chart Breakdown (5 cols) -->
+<div class="lg:col-span-5 bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+<div>
+<h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white">התפלגות הוצאות החודש</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">חלוקה לפי קטגוריות פעילות ובהשוואה של קבועות מול משתנות</p>
+</div>
+<div class="my-6 flex flex-col sm:flex-row items-center justify-center gap-6">
+<div class="relative w-44 h-44 flex items-center justify-center shrink-0">
+<svg id="donutSvg" viewBox="0 0 42 42" class="w-full h-full -rotate-90">
+<!-- Rendered via JS -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+<span class="text-[11px] text-slate-400">סה"כ</span>
+<span id="donutCenterTotal" class="text-base font-extrabold font-num text-slate-800 dark:text-slate-100">₪0</span>
+</div>
+</div>
+<div id="donutLegend" class="w-full space-y-2 max-h-48 overflow-y-auto pr-1">
+<!-- Rendered via JS -->
+</div>
+</div>
+<!-- Fixed vs Variable Ratio Bar -->
+<div class="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-2">
+<div class="flex justify-between text-xs font-semibold">
+<span id="fixedExpensesLabel" class="text-indigo-600 dark:text-indigo-400">קבועות: ₪0 (0%)</span>
+<span id="variableExpensesLabel" class="text-amber-600 dark:text-amber-400">משתנות: ₪0 (0%)</span>
+</div>
+<div class="w-full h-2.5 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden flex">
+<div id="fixedRatioBar" class="bg-indigo-600 h-full transition-all duration-300" style="width: 50%"></div>
+<div id="variableRatioBar" class="bg-amber-500 h-full transition-all duration-300" style="width: 50%"></div>
+</div>
+</div>
+</div>
+<!-- Editable Expenses List & Quick Value Adjuster (7 cols) -->
+<div class="lg:col-span-7 bg-white dark:bg-slate-900 p-5 sm:p-6 rounded-3xl border border-slate-200/90 dark:border-slate-800 shadow-sm flex flex-col">
+<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+<div>
+<h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+<span>פירוט ועריכת ערכי הוצאות</span>
+<span id="txCountBadge" class="text-xs font-bold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">0 רשומות</span>
+</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">
+ניתן לשנות ולהתאים את הסכום של כל הוצאה ישירות מהרשימה או בעזרת כפתורי ה-+/-
+</p>
+</div>
+<!-- Search & Filter -->
+<div class="flex items-center gap-2 w-full sm:w-auto">
+<div class="relative flex-1 sm:w-48">
+<i class="ph-bold ph-magnifying-glass absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+<input id="txSearchInput" oninput="renderTransactionsList()" type="text" placeholder="חיפוש הוצאה..."
+class="w-full pr-8 pl-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+</div>
+<select id="txCategoryFilter" onchange="renderTransactionsList()" class="py-1.5 px-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs focus:outline-none">
+<option value="all">כל הקטגוריות</option>
+</select>
+</div>
+</div>
+<!-- Transactions List Container -->
+<div id="transactionsListContainer" class="space-y-2.5 max-h-[380px] overflow-y-auto pr-1 flex-1">
+<!-- Populated via JS -->
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 px-3 pt-2 pb-safe flex items-center justify-around">
+<button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex flex-col items-center gap-0.5 text-indigo-600 dark:text-indigo-400 font-bold text-[11px]">
+<i class="ph-fill ph-squares-four text-xl"></i>
+<span>לוח הוצאות</span>
+</button>
+<button onclick="openBasketModal()" class="flex flex-col items-center gap-0.5 text-slate-600 dark:text-slate-300 font-medium text-[11px]">
+<i class="ph-bold ph-shopping-basket text-xl"></i>
+<span>סל קטגוריות</span>
+</button>
+<button onclick="scrollToEfficiencySection()" class="flex flex-col items-center gap-0.5 text-emerald-600 dark:text-emerald-400 font-bold text-[11px]">
+<i class="ph-fill ph-brain text-xl"></i>
+<span>התייעלות</span>
+</button>
+<button onclick="openSimulatorModal()" class="flex flex-col items-center gap-0.5 text-slate-600 dark:text-slate-300 font-medium text-[11px]">
+<i class="ph-bold ph-sliders-horizontal text-xl"></i>
+<span>התאמת ערכים</span>
+</button>
+</nav>
+<!-- MODAL 1: Category Expense Entry, Target Adjustment & Inline Editing -->
+<div id="categoryModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-end md:items-center justify-center p-0 md:p-4">
+<div class="animate-sheet bg-white dark:bg-slate-900 w-full max-w-lg rounded-t-3xl md:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+<!-- Modal Header -->
+<div id="catModalHeader" class="p-4 sm:p-5 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div id="catModalIcon" class="w-12 h-12 rounded-2xl flex items-center justify-center text-2xl bg-indigo-50 dark:bg-slate-800">
+🛒
+</div>
+<div>
+<h3 id="catModalTitle" class="text-lg font-extrabold text-slate-900 dark:text-white">קניות לבית</h3>
+<p id="catModalSubtitle" class="text-xs text-slate-500 dark:text-slate-400 font-num">סה"כ החודש: ₪0</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5">
+<button onclick="promptDeleteCategory(state.activeModalCatId, event)" title="מחק קטגוריה זו מהרשימה" class="w-9 h-9 rounded-xl bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 hover:bg-rose-100 dark:hover:bg-rose-900/80 flex items-center justify-center transition">
+<i class="ph-bold ph-trash text-lg"></i>
+</button>
+<button onclick="closeCategoryModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white flex items-center justify-center transition">
+<i class="ph-bold ph-x text-lg"></i>
+</button>
+</div>
+</div>
+<!-- Modal Body (Scrollable) -->
+<div class="p-4 sm:p-5 overflow-y-auto space-y-5">
+<!-- Target Value Adjustment Box inside Category Modal -->
+<div class="bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-700/70 space-y-2.5">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+<i class="ph-fill ph-target text-indigo-500"></i>
+<span>יעד תקציבי חודשי לקטגוריה זו:</span>
+</span>
+<span id="catModalHistoricalHint" class="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold">
+ממוצע רב-חודשי: ₪0
+</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="relative flex-1">
+<span class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm">₪</span>
+<input id="catModalTargetInput" type="number" min="0" step="50"
+class="w-full pr-8 pl-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-num font-bold text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+</div>
+<button onclick="saveCategoryTargetFromModal()" class="px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition">
+עדכן יעד
+</button>
+<button onclick="setCategoryTargetToHistoricalAvg()" title="התאם לממוצע ההיסטורי" class="px-3 py-2 rounded-xl bg-slate-200/80 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-300 text-xs font-semibold transition">
+לפי ממוצע
+</button>
+</div>
+</div>
+<!-- Add or Edit Expense Form -->
+<form id="expenseEntryForm" onsubmit="handleSaveExpense(event)" class="space-y-3.5">
+<input type="hidden" id="editingExpenseId" value="">
+<div class="flex items-center justify-between">
+<label id="expenseFormTitleLabel" class="text-xs sm:text-sm font-extrabold text-slate-800 dark:text-slate-100">
+הוספת הוצאה חדשה לקטגוריה
+</label>
+<button type="button" id="cancelEditExpenseBtn" onclick="resetExpenseEntryForm()" class="hidden text-xs font-bold text-rose-600 hover:underline">
+ביטול עריכה
+</button>
+</div>
+<!-- Amount Input + Quick Stepper Buttons -->
+<div class="space-y-2">
+<div class="relative">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-xl font-extrabold text-indigo-600 dark:text-indigo-400">₪</span>
+<input id="expenseAmountInput" type="number" step="any" required placeholder="0"
+class="w-full pr-11 pl-4 py-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800 border-2 border-indigo-200 dark:border-indigo-800/80 text-2xl font-extrabold font-num text-slate-900 dark:text-white focus:outline-none focus:border-indigo-600 transition">
+</div>
+<!-- Quick Value Adjust Chips -->
+<div class="flex flex-wrap items-center gap-1.5">
+<span class="text-[11px] text-slate-400 ml-1">התאמת ערך מהירה:</span>
+<button type="button" onclick="adjustAmountInput(-50)" class="px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-300 text-xs font-bold font-num hover:bg-rose-100">-50</button>
+<button type="button" onclick="adjustAmountInput(-10)" class="px-2.5 py-1 rounded-lg bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-300 text-xs font-bold font-num hover:bg-rose-100">-10</button>
+<button type="button" onclick="adjustAmountInput(10)" class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold font-num hover:bg-emerald-100">+10</button>
+<button type="button" onclick="adjustAmountInput(50)" class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold font-num hover:bg-emerald-100">+50</button>
+<button type="button" onclick="adjustAmountInput(100)" class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold font-num hover:bg-emerald-100">+100</button>
+<button type="button" onclick="adjustAmountInput(250)" class="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs font-bold font-num hover:bg-emerald-100">+250</button>
+</div>
+</div>
+<!-- Quick Description Suggestions -->
+<div id="quickDescChips" class="flex flex-wrap gap-1.5">
+<!-- Populated via JS -->
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+<input id="expenseNoteInput" type="text" placeholder="תיאור (למשל: קנייה שבועית)"
+class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+<input id="expenseDateInput" type="date"
+class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-num focus:outline-none focus:ring-2 focus:ring-indigo-500">
+</div>
+<!-- Fixed Expense Checkbox -->
+<label class="flex items-center gap-2.5 cursor-pointer select-none pt-1">
+<input id="expenseIsFixedInput" type="checkbox" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500">
+<span class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium">
+הוצאה חודשית קבועה (ניתן לייבא אוטומטית בחודש הבא)
+</span>
+</label>
+<button type="submit" id="expenseSubmitBtn" class="w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md shadow-indigo-500/20 transition flex items-center justify-center gap-2">
+<i class="ph-bold ph-check-circle text-lg"></i>
+<span id="expenseSubmitBtnText">שמור הוצאה</span>
+</button>
+</form>
+<!-- Existing Expenses in this Category (with quick value edit!) -->
+<div class="pt-3 border-t border-slate-100 dark:border-slate-800 space-y-2.5">
+<h4 class="text-xs font-bold text-slate-500 dark:text-slate-400">
+הוצאות שנרשמו החודש בקטגוריה זו (לחץ על סכום או על העיפרון להתאמת הערך):
+</h4>
+<div id="catModalHistoryList" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+<!-- Populated via JS -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL 2: Interactive Expense Value Adjuster & Savings Simulator ("סימולטור התאמת ערכים וחיסכון") -->
+<div id="simulatorModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-end md:items-center justify-center p-0 md:p-4">
+<div class="animate-sheet bg-white dark:bg-slate-900 w-full max-w-3xl rounded-t-3xl md:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+<div class="p-4 sm:p-6 bg-gradient-to-l from-indigo-600/10 via-emerald-500/5 to-transparent border-b border-slate-200 dark:border-slate-800 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-indigo-600 text-white flex items-center justify-center text-xl">
+<i class="ph-bold ph-sliders-horizontal"></i>
+</div>
+<div>
+<h3 class="text-base sm:text-xl font-extrabold text-slate-900 dark:text-white">
+סימולטור התאמת ערכי הוצאות וחיסכון שנתי
+</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">
+הזז את המחוונים או הקלד סכום חדש לכל קטגוריה כדי לראות כמה תוכל לחסוך בחודש ובשנה
+</p>
+</div>
+</div>
+<button onclick="closeSimulatorModal()" class="w-9 h-9 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 flex items-center justify-center">
+<i class="ph-bold ph-x text-lg"></i>
+</button>
+</div>
+<!-- Live Savings Summary Banner inside Simulator -->
+<div class="px-5 py-3.5 bg-slate-50 dark:bg-slate-800/80 border-b border-slate-200/70 dark:border-slate-700 grid grid-cols-3 gap-3 text-center">
+<div>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 block">סה"כ תקציב מותאם</span>
+<span id="simTotalAdjusted" class="text-base sm:text-xl font-extrabold font-num text-slate-900 dark:text-white">₪0</span>
+</div>
+<div>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 block">חיסכון חודשי צפוי</span>
+<span id="simMonthlySavings" class="text-base sm:text-xl font-extrabold font-num text-emerald-600 dark:text-emerald-400">₪0</span>
+</div>
+<div>
+<span class="text-[11px] text-slate-500 dark:text-slate-400 block">חיסכון שנתי מצטבר (12 חודשים)</span>
+<span id="simYearlySavings" class="text-base sm:text-xl font-extrabold font-num text-indigo-600 dark:text-indigo-400">₪0</span>
+</div>
+</div>
+<!-- Sliders List -->
+<div id="simulatorRowsContainer" class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1">
+<!-- Populated dynamically via JS -->
+</div>
+<!-- Footer Actions -->
+<div class="p-4 sm:px-6 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex flex-wrap items-center justify-between gap-2">
+<button onclick="optimizeSimulatorByModel()" class="px-4 py-2.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/80 text-emerald-700 dark:text-emerald-300 border border-emerald-300/60 text-xs sm:text-sm font-bold hover:bg-emerald-100 transition flex items-center gap-1.5">
+<i class="ph-fill ph-magic-wand"></i>
+<span>התאמה חכמה אוטומטית לפי המודל הלומד</span>
+</button>
+<div class="flex items-center gap-2 mr-auto">
+<button onclick="closeSimulatorModal()" class="px-4 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs sm:text-sm font-semibold">
+סגור
+</button>
+<button onclick="applySimulatorTargets()" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-extrabold shadow-md shadow-indigo-500/20 transition">
+שמור והחל ערכי יעד חדשים
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL 3: Create New Custom Category (with Emoji Picker Grid) -->
+<div id="newCategoryModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-end md:items-center justify-center p-0 md:p-4">
+<div class="animate-sheet bg-white dark:bg-slate-900 w-full max-w-lg rounded-t-3xl md:rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-5 sm:p-6 space-y-4 max-h-[92vh] overflow-y-auto">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div id="newCatSelectedEmojiPreview" class="w-11 h-11 rounded-2xl bg-indigo-50 dark:bg-indigo-950/80 flex items-center justify-center text-2xl border border-indigo-200/60 dark:border-indigo-800/60">
+✨
+</div>
+<div>
+<h3 class="text-lg font-extrabold text-slate-900 dark:text-white">הוספת קטגוריה חדשה לסל</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400">בחר שם, יעד חודשי ואימוג'י מתוך הרשימה</p>
+</div>
+</div>
+<button onclick="closeNewCategoryModal()" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-500 hover:text-slate-800">
+<i class="ph-bold ph-x"></i>
+</button>
+</div>
+<form onsubmit="handleCreateCategory(event)" class="space-y-4">
+<div>
+<label class="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">שם הקטגוריה</label>
+<input id="newCatName" type="text" required placeholder="למשל: חוגים לילדים / חיסכון לחופשה / קפה ומאפה"
+class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+<div>
+<label class="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">קבוצה בסל</label>
+<select id="newCatGroup" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+<option value="מותאם אישית">מותאם אישית</option>
+<option value="דיור וחשבונות">דיור וחשבונות</option>
+<option value="קניות ויומיום">קניות ויומיום</option>
+<option value="רכב ותחבורה">רכב ותחבורה</option>
+<option value="ביטוחים ובריאות">ביטוחים ובריאות</option>
+<option value="פנאי ומשפחה">פנאי ומשפחה</option>
+</select>
+</div>
+<div>
+<label class="text-xs font-bold text-slate-600 dark:text-slate-300 block mb-1">יעד תקציב חודשי (₪)</label>
+<input id="newCatBudget" type="number" value="500" min="0" step="50"
+class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-num font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500">
+</div>
+</div>
+<!-- Interactive Emoji Picker List -->
+<div class="space-y-2">
+<div class="flex items-center justify-between">
+<label class="text-xs font-bold text-slate-600 dark:text-slate-300">בחר אימוג'י מהרשימה:</label>
+<div class="flex items-center gap-1.5">
+<span class="text-[11px] text-slate-400">נבחר:</span>
+<input id="newCatIcon" type="text" value="✨" maxlength="4" oninput="syncCustomEmojiInput(this.value)"
+class="w-12 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center text-base focus:outline-none focus:ring-2 focus:ring-indigo-500">
+</div>
+</div>
+<div id="emojiPickerGrid" class="grid grid-cols-8 sm:grid-cols-10 gap-1.5 p-2.5 rounded-2xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/80 dark:border-slate-700/70 max-h-48 overflow-y-auto">
+<!-- Populated dynamically via JS -->
+</div>
+</div>
+<button type="submit" class="w-full py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-md shadow-indigo-500/20 transition flex items-center justify-center gap-2">
+<i class="ph-bold ph-plus-circle text-lg"></i>
+<span>הוסף קטגוריה לסל ההוצאות שלי</span>
+</button>
+</form>
+</div>
+</div>
+<!-- MODAL 3B: Delete Category Confirmation Modal -->
+<div id="deleteCatModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+<div class="animate-sheet bg-white dark:bg-slate-900 w-full max-w-sm rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-5 space-y-4 text-center">
+<div class="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-950/80 text-rose-600 dark:text-rose-400 flex items-center justify-center text-3xl mx-auto">
+<span id="deleteCatModalIcon">🗑️</span>
+</div>
+<div class="space-y-1">
+<h3 class="text-lg font-extrabold text-slate-900 dark:text-white">מחיקת קטגוריה מהרשימה</h3>
+<p id="deleteCatModalText" class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+האם אתה בטוח שברצונך למחוק את הקטגוריה?
+</p>
+</div>
+<div class="flex items-center gap-2.5 pt-2">
+<button onclick="closeDeleteCatModal()" class="flex-1 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs sm:text-sm hover:bg-slate-200 transition">
+ביטול
+</button>
+<button onclick="confirmDeleteCategory()" class="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs sm:text-sm shadow-sm shadow-rose-500/20 transition flex items-center justify-center gap-1.5">
+<i class="ph-bold ph-trash"></i>
+<span>כן, מחק</span>
+</button>
+</div>
+</div>
+</div>
+<!-- MODAL 4: Monthly Overall Budget Edit Modal -->
+<div id="budgetEditModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+<div class="animate-sheet bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-extrabold text-slate-900 dark:text-white">התאמת תקציב חודשי כולל</h3>
+<button onclick="closeBudgetEditModal()" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<i class="ph-bold ph-x"></i>
+</button>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">
+קבע את תקרת התקציב החודשית שלך, או סנכרן אותה אוטומטית עם סכום יעדי הקטגוריות שבסל שלך.
+</p>
+<div class="space-y-3">
+<div class="relative">
+<span class="absolute right-3.5 top-1/2 -translate-y-1/2 font-bold text-slate-400">₪</span>
+<input id="overallBudgetInput" type="number" step="100" min="0"
+class="w-full pr-9 pl-4 py-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xl font-extrabold font-num">
+</div>
+<button onclick="syncOverallBudgetToCategoriesSum()" class="w-full py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-bold hover:bg-slate-200 transition">
+סנכרן לסכום יעדי הקטגוריות הפעילות
+</button>
+<button onclick="saveOverallBudget()" class="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm">
+שמור תקציב חודשי
+</button>
+</div>
+</div>
+</div>
+<!-- MODAL 5: Demo / Reset Data Modal -->
+<div id="demoResetModal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+<div class="animate-sheet bg-white dark:bg-slate-900 w-full max-w-md rounded-3xl border border-slate-200 dark:border-slate-800 shadow-2xl p-5 space-y-4">
+<div class="flex items-center justify-between">
+<h3 class="text-lg font-extrabold text-slate-900 dark:text-white">ניהול נתונים והיסטוריית למידה</h3>
+<button onclick="closeDemoResetModal()" class="w-8 h-8 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<i class="ph-bold ph-x"></i>
+</button>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">
+אפשר לטעון מחדש את הנתונים מהגיליון שלך, או לאפס את ההוצאות ולהתחיל מדף חלק.
+</p>
+<div class="space-y-2.5">
+<button onclick="restoreDemoData()" class="w-full py-3 rounded-2xl bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-bold text-xs sm:text-sm hover:bg-indigo-100 transition flex items-center justify-center gap-2">
+<i class="ph-bold ph-magic-wand"></i>
+<span>טען מחדש מהגיליון</span>
+</button>
+<button onclick="clearCurrentMonthExpenses()" class="w-full py-3 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 font-bold text-xs sm:text-sm hover:bg-amber-100 transition flex items-center justify-center gap-2">
+<i class="ph-bold ph-eraser"></i>
+<span>נקה רק את הוצאות החודש הנוכחי</span>
+</button>
+<button onclick="clearAllExpensesData()" class="w-full py-3 rounded-2xl bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-300 font-bold text-xs sm:text-sm hover:bg-rose-100 transition flex items-center justify-center gap-2">
+<i class="ph-bold ph-trash"></i>
+<span>איפוס מלא והתחלה מאפס</span>
+</button>
+</div>
+</div>
+</div>
+<div id="syncBadge" class="fixed bottom-[76px] md:bottom-3 right-3 z-40 text-xs font-bold px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 shadow-sm">💾 שמור במכשיר בלבד</div>
+<!-- Toast Notification -->
+<div id="toastContainer" class="fixed bottom-20 md:bottom-6 left-6 z-50 pointer-events-none flex flex-col gap-2"></div>
+<script>
+const STORAGE_KEY = 'wallet_desktop_v1';
+const HEBREW_MONTHS = [
+'ינואר', 'פברואר', 'מרץ', 'אפריל', 'מאי', 'יוני',
+'יולי', 'אוגוסט', 'ספטמבר', 'אוקטובר', 'נובמבר', 'דצמבר'
+];
+const CATEGORY_EMOJIS = [
+'🛒', '🏠', '⛽', '🚗', '💡', '📡', '🩺', '🏋️', '🍕', '☕',
+'🍔', '🍺', '🛍️', '👕', '👟', '✈️', '🏖️', '🧸', '👶', '🐾',
+'🎓', '📚', '💊', '🦷', '💇', '💄', '🎁', '🎉', '🎬', '🎮',
+'🎵', '⚽', '🚲', '🚆', '🚕', '🛠️', '🧹', '🪴', '💻', '📱',
+'🏦', '📈', '💳', '💰', '🛡️', '📦', '🕶️', '🍿', '🥐', '✨'
+];
+const DEFAULT_CATEGORIES = [
+// הוצאות קבועות
+{ id: 'health_ins', name: 'ביטוח בריאות', group: 'הוצאות קבועות', icon: '🩺', color: '#06b6d4', active: true, budget: 210, isFixedDefault: true, canNegotiate: false, suggestions: ['ביטוח בריאות', 'ביטוח משלים', 'תרופות / רופא'] },
+{ id: 'comm', name: 'מנויים ותקשורת', group: 'הוצאות קבועות', icon: '📡', color: '#8b5cf6', active: true, budget: 20, isFixedDefault: true, canNegotiate: false, suggestions: ['Google One', 'חבילת סלולר', 'סטרימינג'] },
+{ id: 'fees', name: 'עמלות בנק וכרטיסים', group: 'הוצאות קבועות', icon: '🏦', color: '#64748b', active: true, budget: 10, isFixedDefault: true, canNegotiate: false, suggestions: ['עמלת בנק', 'עמלת כרטיס אשראי', 'עמלת העברה'] },
+// רכב
+{ id: 'car_ins', name: 'ביטוח רכב', group: 'רכב', icon: '🚗', color: '#6366f1', active: true, budget: 410, isFixedDefault: true, canNegotiate: false, suggestions: ['ביטוח רכב – תשלום חודשי', 'אגרת רישוי שנתית'] },
+{ id: 'fuel', name: 'דלק וחניה', group: 'רכב', icon: '⛽', color: '#f59e0b', active: true, budget: 420, isFixedDefault: false, canNegotiate: false, suggestions: ['תדלוק מלא', 'חניה בפנגו', 'Yellow / חנות נוחות', 'שטיפה'] },
+{ id: 'car_maint', name: 'טיפולים ותיקונים (הפרשה)', group: 'רכב', icon: '🛠️', color: '#0ea5e9', active: true, budget: 200, isFixedDefault: false, canNegotiate: false, suggestions: ['טיפול תקופתי', 'פרונט / צמיגים', 'טסט שנתי', 'אביזרים לרכב'] },
+// יום-יום
+{ id: 'groceries', name: 'אוכל וקניות לבית', group: 'יום-יום', icon: '🛒', color: '#10b981', active: true, budget: 900, isFixedDefault: false, canNegotiate: false, suggestions: ['סופר', 'מכולת', 'פארם'] },
+{ id: 'fun', name: 'בילויים ומסעדות', group: 'יום-יום', icon: '🍕', color: '#f43f5e', active: true, budget: 500, isFixedDefault: false, canNegotiate: false, suggestions: ['מסעדה / בית קפה', 'משלוח', 'טיול / שמורת טבע', 'בילוי עם חברים'] },
+{ id: 'shopping', name: 'ביגוד וקניות', group: 'יום-יום', icon: '🛍️', color: '#ec4899', active: true, budget: 300, isFixedDefault: false, canNegotiate: false, suggestions: ['ביגוד והנעלה', 'הזמנה אונליין', 'מוצרים לבית'] },
+{ id: 'misc', name: 'העברות BIT ושונות', group: 'יום-יום', icon: '💳', color: '#a855f7', active: true, budget: 300, isFixedDefault: false, canNegotiate: false, suggestions: ['העברה ב-BIT', 'מתנה', 'שונות'] },
+// לא פעיל כרגע – אפשר להפעיל מהסל
+{ id: 'savings', name: 'חיסכון חודשי', group: 'לא פעיל כרגע', icon: '📈', color: '#059669', active: false, budget: 0, isFixedDefault: true, canNegotiate: false, suggestions: ['הפקדה לחיסכון', 'קופת גמל להשקעה'] },
+{ id: 'gym', name: 'חדר כושר וספורט', group: 'לא פעיל כרגע', icon: '🏋️', color: '#84cc16', active: false, budget: 0, isFixedDefault: true, canNegotiate: false, suggestions: ['מנוי חדר כושר'] },
+{ id: 'transit', name: 'תחבורה ציבורית ומוניות', group: 'לא פעיל כרגע', icon: '🚆', color: '#14b8a6', active: false, budget: 0, isFixedDefault: false, canNegotiate: false, suggestions: ['רב-קו', 'מונית'] },
+{ id: 'rent', name: 'שכר דירה', group: 'לא פעיל כרגע', icon: '🏠', color: '#4f46e5', active: false, budget: 0, isFixedDefault: true, canNegotiate: false, suggestions: ['שכר דירה חודשי'] },
+{ id: 'bills', name: 'חשבונות בית', group: 'לא פעיל כרגע', icon: '💡', color: '#0ea5e9', active: false, budget: 0, isFixedDefault: true, canNegotiate: false, suggestions: ['חשמל', 'מים', 'ארנונה'] },
+{ id: 'history', name: 'היסטוריה מהבנק (לא מפורט)', group: 'לא פעיל כרגע', icon: '📦', color: '#94a3b8', active: false, budget: 0, isFixedDefault: false, canNegotiate: false, suggestions: [] }
+];
+function generateInitialMultiMonthExpenses() {
+return {};
+}
+let state = {
+currentYear: new Date().getFullYear(),
+currentMonth: new Date().getMonth(),
+overallBudget: 0,
+categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)),
+expensesByMonth: generateInitialMultiMonthExpenses(),
+activeModalCatId: null,
+pendingDeleteCatId: null,
+basketExpanded: false,
+simulatorDraftTargets: {}
+};
+// ===== סנכרון ל-Google Sheets (הנתונים נשמרים רק בחשבון Google שלך) =====
+(function(){ // קישור התקנה חד-פעמי: #setup=<url>#<key>
+  if (location.hash.indexOf('#setup=')===0) {
+    const m = decodeURIComponent(location.hash.slice(7)).match(/^(https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec)#([A-Za-z0-9_-]{16,})$/);
+    if (m) { try { localStorage.setItem('wallet_pwa_cfg_v1', JSON.stringify({apiUrl:m[1], apiKey:m[2]})); localStorage.removeItem('wallet_desktop_v1'); } catch(e){} }
+    history.replaceState(null,'',location.pathname);
+  }
+})();
+const WCFG = (function(){ try { return JSON.parse(localStorage.getItem('wallet_pwa_cfg_v1')||'{}')||{}; } catch(e){ return {}; } })();
+const HAS_CLOUD = !!(WCFG.apiUrl && WCFG.apiKey);
+let extraData = {};
+function apiCall(payload) {
+  return fetch(WCFG.apiUrl, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(Object.assign({key: WCFG.apiKey}, payload))})
+    .then(r => r.json()).then(j => { if (j.error) throw new Error(j.error); return j; });
+}
+let lastUpdatedAt = 0;
+let cloudSaveTimer = null, cloudSaving = false, cloudPending = false;
+function dataPayload() {
+return Object.assign({}, extraData, {
+overallBudget: state.overallBudget,
+categories: state.categories,
+expensesByMonth: state.expensesByMonth,
+updatedAt: lastUpdatedAt
+});
+}
+function applyData(d) {
+if (!d || !d.categories || !d.expensesByMonth) return false;
+extraData = d;
+state.overallBudget = d.overallBudget;
+state.categories = d.categories;
+state.expensesByMonth = d.expensesByMonth;
+lastUpdatedAt = Number(d.updatedAt) || 0;
+return true;
+}
+function writeLocalCache() {
+try { localStorage.setItem(STORAGE_KEY, JSON.stringify(dataPayload())); } catch (err) {}
+}
+function loadState() {
+try {
+const raw = localStorage.getItem(STORAGE_KEY);
+if (raw) applyData(JSON.parse(raw));
+} catch (err) {
+console.warn('Could not read local cache:', err);
+}
+}
+function saveState() {
+lastUpdatedAt = Date.now();
+writeLocalCache();
+scheduleCloudSave();
+}
+function setSyncBadge(status) {
+const el = document.getElementById('syncBadge');
+if (!el) return;
+const map = {
+local:   ['💾', 'שמור במכשיר בלבד', 'bg-slate-100 text-slate-600'],
+loading: ['🔄', 'טוען מ-Google…', 'bg-sky-50 text-sky-700'],
+saving:  ['🔄', 'שומר ב-Google…', 'bg-sky-50 text-sky-700'],
+ok:      ['☁️', 'מסונכרן עם Google', 'bg-emerald-50 text-emerald-700'],
+error:   ['⚠️', 'אין חיבור – ינסה שוב', 'bg-amber-50 text-amber-700']
+};
+const [icon, text, cls] = map[status] || map.local;
+el.className = 'fixed bottom-[76px] md:bottom-3 right-3 z-40 text-xs font-bold px-3 py-1.5 rounded-full shadow-sm border border-slate-200 ' + cls;
+el.textContent = icon + ' ' + text;
+}
+function scheduleCloudSave() {
+if (!HAS_CLOUD) return;
+setSyncBadge('saving');
+clearTimeout(cloudSaveTimer);
+cloudSaveTimer = setTimeout(() => { cloudSaveTimer = null; pushToCloud(); }, 700);
+}
+function pushToCloud() {
+if (!HAS_CLOUD) return;
+if (cloudSaving) { cloudPending = true; return; }
+cloudSaving = true;
+apiCall({action:'save', data: JSON.stringify(dataPayload())}).then(j => { const res = j.result;
+cloudSaving = false;
+if (res === 'stale') { cloudPending = false; pullFromCloud(false); return; }
+if (cloudPending) { cloudPending = false; pushToCloud(); }
+else setSyncBadge('ok');
+}).catch(err => {
+cloudSaving = false;
+console.warn('Cloud save failed:', err);
+setSyncBadge('error');
+setTimeout(pushToCloud, 15000);
+});
+}
+function pullFromCloud(isInitial) {
+if (!HAS_CLOUD) return;
+if (cloudSaving || cloudSaveTimer || cloudPending) return; // שינויים מקומיים בדרך – לא לדרוס
+if (isInitial) setSyncBadge('loading');
+apiCall({action:'load'}).then(j => { const raw = j.data;
+if (!raw) { pushToCloud(); return; } // פעם ראשונה – מעלה את ההגדרה ההתחלתית
+let remote = null;
+try { remote = JSON.parse(raw); } catch (e) {}
+const remoteAt = remote ? (Number(remote.updatedAt) || 0) : 0;
+if (remote && remoteAt > lastUpdatedAt) {
+applyData(remote);
+writeLocalCache();
+renderAll();
+} else if (remoteAt < lastUpdatedAt) {
+pushToCloud();
+return;
+}
+setSyncBadge('ok');
+}).catch(err => {
+console.warn('Cloud load failed:', err);
+setSyncBadge('error');
+});
+}
+document.addEventListener('visibilitychange', () => {
+if (document.visibilityState === 'visible') pullFromCloud(false);
+});
+setInterval(() => { if (document.visibilityState === 'visible') pullFromCloud(false); }, 60000);
+function getMonthKey(year = state.currentYear, month = state.currentMonth) {
+return `${year}-${String(month + 1).padStart(2, '0')}`;
+}
+function getCurrentMonthExpenses() {
+const key = getMonthKey();
+if (!state.expensesByMonth[key]) {
+state.expensesByMonth[key] = [];
+}
+return state.expensesByMonth[key];
+}
+function formatILS(num) {
+const rounded = Math.round(Number(num) || 0);
+return '₪' + rounded.toLocaleString('he-IL');
+}
+/**
+* Longitudinal Learning Model:
+* Analyzes all available months in state.expensesByMonth to compute:
+* 1. Historical average per category & overall.
+* 2. Creeping expenses (categories growing over consecutive months).
+* 3. Renegotiation / Fixed benchmark opportunities (insurance, communication, gym).
+* 4. Micro-transaction accumulation in variable categories.
+* 5. Suggested optimized target values & efficiency score.
+*/
+function runLongitudinalLearningModel() {
+const allMonthKeys = Object.keys(state.expensesByMonth)
+.filter(k => (state.expensesByMonth[k] || []).length > 0)
+.sort();
+const currKey = getMonthKey();
+const currExpenses = getCurrentMonthExpenses();
+// Calculate totals per month
+const monthTotals = allMonthKeys.map(k => {
+const sum = (state.expensesByMonth[k] || []).reduce((acc, e) => acc + Number(e.amount || 0), 0);
+return { key: k, total: sum };
+});
+const overallMultiMonthAvg = monthTotals.length > 0
+? monthTotals.reduce((a, b) => a + b.total, 0) / monthTotals.length
+: 0;
+// Per-category historical metrics
+const categoryStats = {};
+state.categories.forEach(cat => {
+const monthlySeries = allMonthKeys.map(k => {
+const items = (state.expensesByMonth[k] || []).filter(e => e.catId === cat.id);
+const total = items.reduce((a, b) => a + Number(b.amount || 0), 0);
+return { key: k, total, count: items.length };
+});
+const nonZeroMonths = monthlySeries.filter(m => m.total > 0);
+const historicalAvg = nonZeroMonths.length > 0
+? nonZeroMonths.reduce((a, b) => a + b.total, 0) / nonZeroMonths.length
+: 0;
+const currentMonthObj = monthlySeries.find(m => m.key === currKey) || { total: 0, count: 0 };
+const currentSpent = currentMonthObj.total;
+// Check consecutive upward creep across last 3 months
+let isCreeping = false;
+let creepGrowthPct = 0;
+if (monthlySeries.length >= 3) {
+const last3 = monthlySeries.slice(-3);
+if (last3[0].total > 0 && last3[2].total > last3[1].total && last3[1].total >= last3[0].total) {
+isCreeping = true;
+creepGrowthPct = Math.round(((last3[2].total - last3[0].total) / last3[0].total) * 100);
+}
+}
+const diffFromAvg = currentSpent - historicalAvg;
+const pctFromAvg = historicalAvg > 0 ? Math.round((diffFromAvg / historicalAvg) * 100) : 0;
+categoryStats[cat.id] = {
+cat,
+monthlySeries,
+historicalAvg: Math.round(historicalAvg),
+currentSpent: Math.round(currentSpent),
+txCountCurrent: currentMonthObj.count,
+isCreeping,
+creepGrowthPct,
+diffFromAvg: Math.round(diffFromAvg),
+pctFromAvg
+};
+});
+// Build actionable efficiency recommendations
+const recommendations = [];
+state.categories.filter(c => c.active).forEach(cat => {
+const st = categoryStats[cat.id];
+if (!st) return;
+// Pattern 1: Creeping variable expense over time
+if (st.isCreeping && st.creepGrowthPct >= 12 && !cat.isFixedDefault) {
+const suggestedTarget = Math.max(100, Math.round((st.historicalAvg * 0.92) / 50) * 50);
+const monthlySave = Math.max(50, st.currentSpent - suggestedTarget);
+recommendations.push({
+id: `rec_creep_${cat.id}`,
+catId: cat.id,
+type: 'creep',
+badge: `זחילת הוצאות (+${st.creepGrowthPct}% ב-3 חודשים)`,
+badgeColor: 'rose',
+title: `מגמת עלייה עקבית ב"${cat.name}"`,
+description: `המודל זיהה שההוצאה בקטגוריה זו עלתה בהתמדה לאורך החודשים האחרונים (ממוצע היסטורי: ${formatILS(st.historicalAvg)}, החודש: ${formatILS(st.currentSpent)}). חזרה למסגרת הממוצע תחסוך משמעותית.`,
+monthlySaving: monthlySave,
+yearlySaving: monthlySave * 12,
+recommendedBudget: suggestedTarget
+});
+}
+// Pattern 2: Fixed expense above market benchmark (Insurance, Communications, Gym)
+else if (cat.canNegotiate && cat.benchmark && st.currentSpent > cat.benchmark * 1.12) {
+const monthlySave = Math.round(st.currentSpent - cat.benchmark);
+recommendations.push({
+id: `rec_bench_${cat.id}`,
+catId: cat.id,
+type: 'benchmark',
+badge: 'הוזלת הוצאה קבועה (מיקוח/השוואה)',
+badgeColor: 'indigo',
+title: `פוטנציאל הוזלה ב"${cat.name}"`,
+description: `אתה משלם כיום באופן קבוע ${formatILS(st.currentSpent)} לחודש. לפי השוואת שוק למנויים דומים, ניתן להוריד את העלות לאזור ${formatILS(cat.benchmark)} בשיחת שימור או מעבר מסלול.`,
+monthlySaving: monthlySave,
+yearlySaving: monthlySave * 12,
+recommendedBudget: cat.benchmark
+});
+}
+// Pattern 3: Current month spike above multi-month average or budget
+else if (st.currentSpent > st.historicalAvg * 1.15 && st.diffFromAvg >= 120) {
+const suggestedTarget = Math.round(st.historicalAvg / 50) * 50;
+const monthlySave = Math.max(50, st.currentSpent - suggestedTarget);
+recommendations.push({
+id: `rec_spike_${cat.id}`,
+catId: cat.id,
+type: 'spike',
+badge: `חריגה של +${st.pctFromAvg}% מהממוצע שלך`,
+badgeColor: 'amber',
+title: `קפיצה חודשית ב"${cat.name}" לעומת ההיסטוריה`,
+description: `החודש הוצאת ${formatILS(st.currentSpent)} (${st.txCountCurrent} פעולות), לעומת ממוצע רב-חודשי של ${formatILS(st.historicalAvg)}. הצבת יעד מותאם תעזור לבלום את החריגה.`,
+monthlySaving: monthlySave,
+yearlySaving: monthlySave * 12,
+recommendedBudget: suggestedTarget
+});
+}
+});
+// Sort recommendations by highest monthly saving potential
+recommendations.sort((a, b) => b.monthlySaving - a.monthlySaving);
+const totalMonthlyPotential = recommendations.reduce((acc, r) => acc + r.monthlySaving, 0);
+// Compute Efficiency Score (0-100)
+const currTotal = currExpenses.reduce((a, b) => a + Number(b.amount || 0), 0);
+let score = 88;
+if (state.overallBudget > 0 && currTotal > state.overallBudget) {
+score -= Math.min(25, Math.round(((currTotal - state.overallBudget) / state.overallBudget) * 50));
+}
+score -= Math.min(20, recommendations.length * 4);
+score = Math.max(42, Math.min(98, score));
+return {
+allMonthKeys,
+monthTotals,
+overallMultiMonthAvg: Math.round(overallMultiMonthAvg),
+categoryStats,
+recommendations,
+totalMonthlyPotential,
+efficiencyScore: score
+};
+}
+function renderAll() {
+const model = runLongitudinalLearningModel();
+renderHeaderMonth();
+renderKPIs(model);
+renderBasketSection();
+renderActiveCategoriesGrid(model);
+renderEfficiencyEngine(model);
+renderDonutAndRatios();
+populateCategoryFilterDropdown();
+renderTransactionsList();
+}
+function renderHeaderMonth() {
+const label = `${HEBREW_MONTHS[state.currentMonth]} ${state.currentYear}`;
+document.getElementById('currentMonthLabel').textContent = label;
+}
+function renderKPIs(model) {
+const expenses = getCurrentMonthExpenses();
+const totalSpent = expenses.reduce((sum, item) => sum + Number(item.amount || 0), 0);
+const budget = Number(state.overallBudget) || 0;
+const remaining = budget - totalSpent;
+const pctUsed = budget > 0 ? Math.min(100, Math.round((totalSpent / budget) * 100)) : 0;
+document.getElementById('kpiTotalSpent').textContent = formatILS(totalSpent);
+document.getElementById('kpiBudget').textContent = formatILS(budget);
+// Month vs Historical Average indicator
+const vsAvgEl = document.getElementById('kpiMonthVsAvg');
+if (model.overallMultiMonthAvg > 0) {
+const diff = totalSpent - model.overallMultiMonthAvg;
+const pct = Math.round((diff / model.overallMultiMonthAvg) * 100);
+if (diff > 100) {
+vsAvgEl.className = 'text-[11px] sm:text-xs font-bold mt-1 flex items-center gap-1 text-rose-600 dark:text-rose-400';
+vsAvgEl.innerHTML = `<i class="ph-bold ph-trend-up"></i> <span>+${pct}% מעל הממוצע הרב-חודשי (${formatILS(model.overallMultiMonthAvg)})</span>`;
+} else if (diff < -100) {
+vsAvgEl.className = 'text-[11px] sm:text-xs font-bold mt-1 flex items-center gap-1 text-emerald-600 dark:text-emerald-400';
+vsAvgEl.innerHTML = `<i class="ph-bold ph-trend-down"></i> <span>${pct}% מתחת לממוצע הרב-חודשי (${formatILS(model.overallMultiMonthAvg)})</span>`;
+} else {
+vsAvgEl.className = 'text-[11px] sm:text-xs font-medium mt-1 flex items-center gap-1 text-slate-500';
+vsAvgEl.innerHTML = `<i class="ph-bold ph-equals"></i> <span>דומה לממוצע הרב-חודשי (${formatILS(model.overallMultiMonthAvg)})</span>`;
+}
+}
+// Progress bar
+const bar = document.getElementById('kpiBudgetBar');
+bar.style.width = `${pctUsed}%`;
+bar.className = `h-full rounded-full transition-all duration-500 ${
+pctUsed > 95 ? 'bg-rose-500' : pctUsed > 80 ? 'bg-amber-500' : 'bg-indigo-600'
+}`;
+// Remaining
+const remEl = document.getElementById('kpiRemaining');
+const remSub = document.getElementById('kpiRemainingSub');
+if (remaining >= 0) {
+remEl.textContent = formatILS(remaining);
+remEl.className = 'text-2xl sm:text-3xl font-extrabold font-num text-emerald-600 dark:text-emerald-400';
+remSub.textContent = `${pctUsed}% מנוצל מהתקציב החודשי`;
+} else {
+remEl.textContent = `${formatILS(Math.abs(remaining))}-`;
+remEl.className = 'text-2xl sm:text-3xl font-extrabold font-num text-rose-600 dark:text-rose-400';
+remSub.textContent = `חריגה של ${pctUsed - 100}% מהתקציב!`;
+}
+// Efficiency Potential KPI
+document.getElementById('kpiEfficiencyPotential').innerHTML = `${formatILS(model.totalMonthlyPotential)}<span class="text-sm font-normal opacity-85">/חודש</span>`;
+document.getElementById('kpiEfficiencyYearly').innerHTML = `<span>חיסכון שנתי אפשרי: <strong>${formatILS(model.totalMonthlyPotential * 12)}</strong></span> <i class="ph-bold ph-arrow-left"></i>`;
+}
+function renderBasketSection() {
+const activeCount = state.categories.filter(c => c.active).length;
+document.getElementById('activeBasketCountBadge').textContent = `${activeCount} פעילות`;
+// Quick horizontal pills with quick delete button
+const pillsContainer = document.getElementById('quickBasketPills');
+pillsContainer.innerHTML = state.categories.map(cat => `
+<div class="shrink-0 inline-flex items-center rounded-2xl text-xs font-bold border transition select-none overflow-hidden ${
+cat.active
+? 'bg-indigo-600 text-white border-indigo-600 shadow-sm shadow-indigo-500/20'
+: 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-indigo-400'
+}">
+<button onclick="toggleCategoryActive('${cat.id}')" class="inline-flex items-center gap-2 pr-3.5 pl-2 py-2">
+<span>${cat.icon}</span>
+<span>${cat.name}</span>
+<i class="ph-bold ${cat.active ? 'ph-check-circle' : 'ph-plus-circle opacity-60'}"></i>
+</button>
+<button onclick="promptDeleteCategory('${cat.id}', event)" title="מחק קטגוריה מהרשימה"
+class="px-2 py-2 border-r ${
+cat.active
+? 'border-indigo-500/60 text-indigo-200 hover:text-white hover:bg-indigo-700'
+: 'border-slate-200 dark:border-slate-700 text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/50'
+} transition flex items-center justify-center">
+<i class="ph-bold ph-trash text-xs"></i>
+</button>
+</div>
+`).join('');
+// Grouped full basket drawer
+const groups = {};
+state.categories.forEach(cat => {
+const g = cat.group || 'אחר';
+if (!groups[g]) groups[g] = [];
+groups[g].push(cat);
+});
+const groupedContainer = document.getElementById('groupedBasketContainer');
+groupedContainer.innerHTML = Object.entries(groups).map(([groupName, cats]) => `
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200/70 dark:border-slate-700/60 space-y-2.5">
+<h4 class="text-xs font-extrabold text-slate-500 dark:text-slate-400 uppercase tracking-wider">${groupName}</h4>
+<div class="space-y-2">
+${cats.map(cat => `
+<div onclick="toggleCategoryActive('${cat.id}')" class="flex items-center justify-between p-2.5 rounded-xl cursor-pointer transition border ${
+cat.active
+? 'bg-white dark:bg-slate-800 border-indigo-500/60 shadow-sm'
+: 'bg-transparent border-slate-200/60 dark:border-slate-700/50 opacity-65 hover:opacity-100'
+}">
+<div class="flex items-center gap-2.5 min-w-0">
+<span class="text-xl shrink-0">${cat.icon}</span>
+<div class="min-w-0">
+<div class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 truncate">${cat.name}</div>
+<div class="text-[11px] text-slate-400 font-num">יעד: ${formatILS(cat.budget)}</div>
+</div>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button onclick="promptDeleteCategory('${cat.id}', event)" title="מחק קטגוריה מהרשימה"
+class="w-7 h-7 rounded-lg bg-rose-50 dark:bg-rose-950/50 text-rose-500 hover:bg-rose-100 hover:text-rose-700 flex items-center justify-center transition">
+<i class="ph-bold ph-trash text-xs"></i>
+</button>
+<div class="w-7 h-7 rounded-lg flex items-center justify-center ${
+cat.active ? 'bg-indigo-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-400'
+}">
+<i class="ph-bold ${cat.active ? 'ph-check' : 'ph-plus'} text-xs"></i>
+</div>
+</div>
+</div>
+`).join('')}
+</div>
+</div>
+`).join('');
+}
+function toggleInlineBasket() {
+state.basketExpanded = !state.basketExpanded;
+const drawer = document.getElementById('expandedBasketDrawer');
+const btnText = document.getElementById('toggleBasketBtnText');
+const icon = document.getElementById('toggleBasketIcon');
+if (state.basketExpanded) {
+drawer.classList.remove('hidden');
+btnText.textContent = 'סגור עריכת סל';
+icon.className = 'ph-bold ph-caret-up';
+} else {
+drawer.classList.add('hidden');
+btnText.textContent = 'הצג/ערוך סל מלא';
+icon.className = 'ph-bold ph-caret-down';
+}
+}
+function openBasketModal() {
+state.basketExpanded = true;
+const drawer = document.getElementById('expandedBasketDrawer');
+drawer.classList.remove('hidden');
+document.getElementById('toggleBasketBtnText').textContent = 'סגור עריכת סל';
+document.getElementById('toggleBasketIcon').className = 'ph-bold ph-caret-up';
+drawer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function toggleCategoryActive(catId) {
+const cat = state.categories.find(c => c.id === catId);
+if (!cat) return;
+cat.active = !cat.active;
+saveState();
+renderAll();
+showToast(cat.active ? `"${cat.name}" נוספה ללוח המעקב` : `"${cat.name}" הוסתרה מלוח המעקב`, 'info');
+}
+function renderActiveCategoriesGrid(model) {
+const grid = document.getElementById('activeCategoriesGrid');
+const expenses = getCurrentMonthExpenses();
+const activeCats = state.categories.filter(c => c.active);
+if (activeCats.length === 0) {
+grid.innerHTML = `
+<div class="col-span-full bg-white dark:bg-slate-900 p-8 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 text-center space-y-3">
+<div class="text-4xl">🧺</div>
+<h3 class="text-base font-bold">סל הקטגוריות שלך ריק כרגע</h3>
+<p class="text-xs text-slate-500">לחץ על הקטגוריות בסל למעלה כדי להפעיל אותן ולהתחיל להזין הוצאות.</p>
+</div>
+`;
+return;
+}
+grid.innerHTML = activeCats.map(cat => {
+const catExpenses = expenses.filter(e => e.catId === cat.id);
+const spent = catExpenses.reduce((sum, e) => sum + Number(e.amount || 0), 0);
+const budget = Number(cat.budget) || 0;
+const pct = budget > 0 ? Math.min(100, Math.round((spent / budget) * 100)) : 0;
+const isOver = budget > 0 && spent > budget;
+const st = model.categoryStats[cat.id];
+// Historical learning badge on the card
+let trendBadgeHtml = '';
+if (st && st.historicalAvg > 0) {
+if (st.isCreeping) {
+trendBadgeHtml = `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-50 text-rose-600 dark:bg-rose-950/80 dark:text-rose-300 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i> מגמת עלייה</span>`;
+} else if (spent < st.historicalAvg * 0.9 && spent > 0) {
+trendBadgeHtml = `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-600 dark:bg-emerald-950/80 dark:text-emerald-300 flex items-center gap-0.5"><i class="ph-bold ph-trend-down"></i> מתחת לממוצע</span>`;
+} else {
+trendBadgeHtml = `<span class="text-[10px] font-medium text-slate-400 font-num">ממוצע: ${formatILS(st.historicalAvg)}</span>`;
+}
+}
+return `
+<div onclick="openCategoryModal('${cat.id}')"
+class="category-card bg-white dark:bg-slate-900 p-4 sm:p-5 rounded-3xl border ${
+isOver ? 'border-rose-300 dark:border-rose-800/80' : 'border-slate-200/90 dark:border-slate-800'
+} shadow-sm cursor-pointer flex flex-col justify-between relative overflow-hidden group">
+<!-- Top Row: Icon, Name & Quick Edit Target Button -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl flex items-center justify-center text-2xl shrink-0" style="background-color: ${cat.color}18">
+${cat.icon}
+</div>
+<div>
+<h3 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition leading-snug">
+${cat.name}
+</h3>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-[11px] text-slate-400">${catExpenses.length} פעולות</span>
+${trendBadgeHtml}
+</div>
+</div>
+</div>
+</div>
+<!-- Middle Row: Spent Value & Editable Budget Target -->
+<div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-baseline justify-between">
+<div>
+<span class="text-[11px] text-slate-400 block">הוצאה בפועל</span>
+<span class="text-xl sm:text-2xl font-extrabold font-num ${isOver ? 'text-rose-600 dark:text-rose-400' : 'text-slate-900 dark:text-white'}">
+${formatILS(spent)}
+</span>
+</div>
+<div class="text-left">
+<span class="text-[11px] text-slate-400 block">יעד מותאם</span>
+<span class="text-xs sm:text-sm font-bold font-num text-slate-600 dark:text-slate-300 flex items-center gap-1">
+${formatILS(budget)}
+<i class="ph-bold ph-sliders text-indigo-500 text-xs"></i>
+</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full mt-2.5 overflow-hidden">
+<div class="h-full rounded-full transition-all duration-500"
+style="width: ${pct}%; background-color: ${isOver ? '#f43f5e' : cat.color}"></div>
+</div>
+<!-- Bottom Quick Action Hint -->
+<div class="mt-3 flex items-center justify-between text-[11px] font-bold text-indigo-600 dark:text-indigo-400">
+<span>+ הוסף או התאם ערך הוצאה</span>
+<i class="ph-bold ph-caret-left group-hover:-translate-x-1 transition"></i>
+</div>
+</div>
+`;
+}).join('');
+}
+function renderEfficiencyEngine(model) {
+document.getElementById('learningMonthsBadge').textContent = `מנתח ${model.allMonthKeys.length} חודשי פעילות`;
+document.getElementById('efficiencyScoreValue').textContent = `${model.efficiencyScore}/100`;
+document.getElementById('multiMonthAvgLabel').textContent = `ממוצע: ${formatILS(model.overallMultiMonthAvg)}`;
+// 1. Render Actionable Recommendations
+const listEl = document.getElementById('learnedInsightsList');
+if (model.recommendations.length === 0) {
+listEl.innerHTML = `
+<div class="bg-emerald-50/70 dark:bg-emerald-950/30 p-5 rounded-2xl border border-emerald-200 dark:border-emerald-800/60 text-center space-y-2">
+<div class="text-3xl">🏆</div>
+<h4 class="text-sm sm:text-base font-extrabold text-emerald-900 dark:text-emerald-200">ניהול תקציב מצוין!</h4>
+<p class="text-xs text-emerald-700 dark:text-emerald-300">
+המודל בדק את כל הקטגוריות שלך מול הממוצע הרב-חודשי ולא זיהה חריגות או זחילת הוצאות החודש.
+</p>
+</div>
+`;
+} else {
+listEl.innerHTML = model.recommendations.map(rec => {
+const cat = state.categories.find(c => c.id === rec.catId);
+const badgeStyles = {
+rose: 'bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300',
+indigo: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300',
+amber: 'bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300'
+}[rec.badgeColor] || 'bg-slate-100 text-slate-700';
+return `
+<div class="bg-white dark:bg-slate-800/90 p-4 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 shadow-sm hover:border-emerald-400 transition space-y-3">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="text-xl">${cat ? cat.icon : '💡'}</span>
+<span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${badgeStyles}">
+${rec.badge}
+</span>
+</div>
+<div class="text-left">
+<span class="text-xs font-extrabold font-num text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/80 px-2.5 py-1 rounded-xl border border-emerald-200/60 dark:border-emerald-800/60">
+חיסכון: ${formatILS(rec.monthlySaving)}/חודש (${formatILS(rec.yearlySaving)}/שנה)
+</span>
+</div>
+</div>
+<div>
+<h4 class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">${rec.title}</h4>
+<p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">${rec.description}</p>
+</div>
+<div class="pt-2 border-t border-slate-100 dark:border-slate-700/70 flex flex-wrap items-center justify-between gap-2">
+<span class="text-xs font-num text-slate-500 dark:text-slate-400">
+יעד נוכחי: <strong>${formatILS(cat ? cat.budget : 0)}</strong> ← יעד מומלץ: <strong class="text-emerald-600 dark:text-emerald-400">${formatILS(rec.recommendedBudget)}</strong>
+</span>
+<div class="flex items-center gap-2">
+<button onclick="openCategoryModal('${rec.catId}')" class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 hover:bg-slate-200 transition">
+התאם הוצאות בקטגוריה
+</button>
+<button onclick="applySingleEfficiencyTarget('${rec.catId}', ${rec.recommendedBudget})" class="text-xs font-bold px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition flex items-center gap-1">
+<i class="ph-bold ph-check"></i>
+<span>עדכן יעד ל-${formatILS(rec.recommendedBudget)}</span>
+</button>
+</div>
+</div>
+</div>
+`;
+}).join('');
+}
+// 2. Render Multi-Month Bar Chart
+const chartEl = document.getElementById('multiMonthTrendChart');
+const maxMonthTotal = Math.max(...model.monthTotals.map(m => m.total), 1000);
+const currKey = getMonthKey();
+chartEl.innerHTML = model.monthTotals.map(m => {
+const [y, mm] = m.key.split('-').map(Number);
+const mName = HEBREW_MONTHS[mm - 1] || m.key;
+const heightPct = Math.max(12, Math.round((m.total / maxMonthTotal) * 100));
+const isCurrent = m.key === currKey;
+return `
+<div onclick="jumpToMonthKey('${m.key}')" class="flex-1 flex flex-col items-center justify-end h-full group cursor-pointer">
+<span class="text-[11px] font-bold font-num mb-1.5 ${isCurrent ? 'text-indigo-600 dark:text-indigo-400' : 'text-slate-500 dark:text-slate-400'}">
+${formatILS(m.total)}
+</span>
+<div class="w-full max-w-[48px] rounded-t-xl transition-all duration-300 ${
+isCurrent
+? 'bg-gradient-to-t from-indigo-600 to-violet-500 shadow-md shadow-indigo-500/20'
+: 'bg-slate-200 dark:bg-slate-700 group-hover:bg-indigo-300 dark:group-hover:bg-indigo-800'
+}" style="height: ${heightPct}%"></div>
+<span class="text-[11px] font-semibold mt-2 ${isCurrent ? 'text-indigo-600 dark:text-indigo-400 font-extrabold' : 'text-slate-500'}">
+${mName}
+</span>
+</div>
+`;
+}).join('');
+// 3. Render Category Historical Comparison List
+const compListEl = document.getElementById('categoryHistoricalComparisonList');
+const activeStats = state.categories
+.filter(c => c.active)
+.map(c => model.categoryStats[c.id])
+.filter(Boolean)
+.sort((a, b) => b.diffFromAvg - a.diffFromAvg);
+compListEl.innerHTML = activeStats.map(st => {
+const diff = st.diffFromAvg;
+const isHigher = diff > 30;
+const isLower = diff < -30;
+return `
+<div onclick="openCategoryModal('${st.cat.id}')" class="flex items-center justify-between p-2 rounded-xl bg-slate-50 dark:bg-slate-900/60 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer transition text-xs">
+<div class="flex items-center gap-2">
+<span>${st.cat.icon}</span>
+<span class="font-bold text-slate-800 dark:text-slate-200">${st.cat.name}</span>
+</div>
+<div class="flex items-center gap-2 font-num">
+<span class="text-slate-400 text-[11px]">ממוצע ${formatILS(st.historicalAvg)}</span>
+<span class="font-bold px-2 py-0.5 rounded-lg ${
+isHigher ? 'bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-300' :
+isLower ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950 dark:text-emerald-300' :
+'bg-slate-200/70 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+}">
+${diff > 0 ? '+' : ''}${formatILS(diff)}
+</span>
+</div>
+</div>
+`;
+}).join('');
+}
+function applySingleEfficiencyTarget(catId, newTarget) {
+const cat = state.categories.find(c => c.id === catId);
+if (!cat) return;
+cat.budget = Number(newTarget);
+saveState();
+renderAll();
+showToast(`יעד "${cat.name}" עודכן ל-${formatILS(newTarget)}!`, 'success');
+}
+function applyAllEfficiencyRecommendations() {
+const model = runLongitudinalLearningModel();
+if (model.recommendations.length === 0) {
+showToast('כל היעדים שלך כבר מותאמים באופן מיטבי!', 'info');
+return;
+}
+model.recommendations.forEach(rec => {
+const cat = state.categories.find(c => c.id === rec.catId);
+if (cat) cat.budget = rec.recommendedBudget;
+});
+saveState();
+renderAll();
+showToast(`אומצו ${model.recommendations.length} יעדי התייעלות חכמים!`, 'success');
+}
+function openCategoryModal(catId, expenseIdToEdit = null) {
+const cat = state.categories.find(c => c.id === catId);
+if (!cat) return;
+state.activeModalCatId = catId;
+const model = runLongitudinalLearningModel();
+const st = model.categoryStats[catId];
+const expenses = getCurrentMonthExpenses().filter(e => e.catId === catId);
+const totalCatSpent = expenses.reduce((a, b) => a + Number(b.amount || 0), 0);
+document.getElementById('catModalIcon').textContent = cat.icon;
+document.getElementById('catModalTitle').textContent = cat.name;
+document.getElementById('catModalSubtitle').textContent = `סה"כ החודש: ${formatILS(totalCatSpent)} מתוך יעד של ${formatILS(cat.budget)}`;
+document.getElementById('catModalTargetInput').value = cat.budget;
+document.getElementById('catModalHistoricalHint').textContent = `ממוצע רב-חודשי: ${formatILS(st ? st.historicalAvg : 0)}`;
+// Quick suggestion chips
+const chipsEl = document.getElementById('quickDescChips');
+chipsEl.innerHTML = (cat.suggestions || []).map(s => `
+<button type="button" onclick="selectSuggestionChip('${s}')"
+class="text-xs px-2.5 py-1 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-indigo-100 hover:text-indigo-700 transition">
+${s}
+</button>
+`).join('');
+resetExpenseEntryForm();
+if (expenseIdToEdit) {
+loadExpenseIntoModalForm(expenseIdToEdit);
+}
+renderCategoryModalHistoryList(catId);
+document.getElementById('categoryModal').classList.remove('hidden');
+}
+function closeCategoryModal() {
+document.getElementById('categoryModal').classList.add('hidden');
+state.activeModalCatId = null;
+}
+function selectSuggestionChip(text) {
+document.getElementById('expenseNoteInput').value = text;
+}
+function adjustAmountInput(delta) {
+const input = document.getElementById('expenseAmountInput');
+const current = Number(input.value) || 0;
+const nextVal = Math.max(0, current + delta);
+input.value = nextVal;
+}
+function resetExpenseEntryForm() {
+const cat = state.categories.find(c => c.id === state.activeModalCatId);
+document.getElementById('editingExpenseId').value = '';
+document.getElementById('expenseAmountInput').value = '';
+document.getElementById('expenseNoteInput').value = '';
+document.getElementById('expenseDateInput').value = `${state.currentYear}-${String(state.currentMonth + 1).padStart(2, '0')}-14`;
+document.getElementById('expenseIsFixedInput').checked = cat ? !!cat.isFixedDefault : false;
+document.getElementById('expenseFormTitleLabel').textContent = 'הוספת הוצאה חדשה לקטגוריה';
+document.getElementById('expenseSubmitBtnText').textContent = 'שמור הוצאה';
+document.getElementById('cancelEditExpenseBtn').classList.add('hidden');
+}
+function loadExpenseIntoModalForm(expenseId) {
+const expenses = getCurrentMonthExpenses();
+const exp = expenses.find(e => e.id === expenseId);
+if (!exp) return;
+document.getElementById('editingExpenseId').value = exp.id;
+document.getElementById('expenseAmountInput').value = exp.amount;
+document.getElementById('expenseNoteInput').value = exp.note || '';
+document.getElementById('expenseDateInput').value = exp.date || '';
+document.getElementById('expenseIsFixedInput').checked = !!exp.isFixed;
+document.getElementById('expenseFormTitleLabel').textContent = 'עריכת והתאמת ערך הוצאה קיימת';
+document.getElementById('expenseSubmitBtnText').textContent = 'עדכן ערך הוצאה';
+document.getElementById('cancelEditExpenseBtn').classList.remove('hidden');
+document.getElementById('expenseAmountInput').focus();
+}
+function handleSaveExpense(e) {
+e.preventDefault();
+const catId = state.activeModalCatId;
+if (!catId) return;
+const amount = Number(document.getElementById('expenseAmountInput').value);
+if (!amount || amount <= 0) {
+showToast('נא להזין סכום חיובי', 'error');
+return;
+}
+const note = document.getElementById('expenseNoteInput').value.trim() || 'הוצאה כללית';
+const date = document.getElementById('expenseDateInput').value || `${state.currentYear}-${String(state.currentMonth + 1).padStart(2, '0')}-14`;
+const isFixed = document.getElementById('expenseIsFixedInput').checked;
+const editingId = document.getElementById('editingExpenseId').value;
+const expenses = getCurrentMonthExpenses();
+if (editingId) {
+const existing = expenses.find(item => item.id === editingId);
+if (existing) {
+existing.amount = amount;
+existing.note = note;
+existing.date = date;
+existing.isFixed = isFixed;
+showToast(`ערך ההוצאה עודכן ל-${formatILS(amount)}`, 'success');
+}
+} else {
+expenses.unshift({
+id: 'exp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+catId,
+amount,
+note,
+date,
+isFixed
+});
+showToast(`נוספה הוצאה של ${formatILS(amount)}`, 'success');
+}
+saveState();
+resetExpenseEntryForm();
+renderCategoryModalHistoryList(catId);
+renderAll();
+// Update modal subtitle
+const cat = state.categories.find(c => c.id === catId);
+const updatedTotal = getCurrentMonthExpenses().filter(x => x.catId === catId).reduce((a, b) => a + Number(b.amount || 0), 0);
+document.getElementById('catModalSubtitle').textContent = `סה"כ החודש: ${formatILS(updatedTotal)} מתוך יעד של ${formatILS(cat.budget)}`;
+}
+function renderCategoryModalHistoryList(catId) {
+const listEl = document.getElementById('catModalHistoryList');
+const items = getCurrentMonthExpenses().filter(e => e.catId === catId);
+if (items.length === 0) {
+listEl.innerHTML = `<p class="text-xs text-slate-400 py-3 text-center">עדיין לא נרשמו הוצאות החודש בקטגוריה זו.</p>`;
+return;
+}
+listEl.innerHTML = items.map(item => `
+<div class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/60 gap-2">
+<div class="min-w-0 flex-1">
+<div class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 truncate">${item.note}</div>
+<div class="text-[11px] text-slate-400 font-num flex items-center gap-2">
+<span>${item.date || ''}</span>
+${item.isFixed ? '<span class="text-indigo-500 font-semibold">• קבועה</span>' : ''}
+</div>
+</div>
+<!-- Quick Value Adjust Controls -->
+<div class="flex items-center gap-1.5 shrink-0">
+<button onclick="quickNudgeExpenseValue('${item.id}', -20)" title="הפחת ₪20" class="w-6 h-6 rounded-lg bg-slate-200/80 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-rose-100 hover:text-rose-600 text-[11px] font-bold font-num flex items-center justify-center">-</button>
+<button onclick="loadExpenseIntoModalForm('${item.id}')" title="לחץ לעריכת הערך" class="px-2.5 py-1 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-num font-extrabold text-xs sm:text-sm text-indigo-600 dark:text-indigo-400 hover:border-indigo-500">
+${formatILS(item.amount)}
+</button>
+<button onclick="quickNudgeExpenseValue('${item.id}', 20)" title="הוסף ₪20" class="w-6 h-6 rounded-lg bg-slate-200/80 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-emerald-100 hover:text-emerald-600 text-[11px] font-bold font-num flex items-center justify-center">+</button>
+<button onclick="loadExpenseIntoModalForm('${item.id}')" title="ערוך פרטים" class="w-7 h-7 rounded-lg text-slate-400 hover:text-indigo-600 flex items-center justify-center">
+<i class="ph-bold ph-pencil-simple"></i>
+</button>
+<button onclick="deleteExpense('${item.id}')" title="מחק הוצאה" class="w-7 h-7 rounded-lg text-slate-400 hover:text-rose-600 flex items-center justify-center">
+<i class="ph-bold ph-trash"></i>
+</button>
+</div>
+</div>
+`).join('');
+}
+function quickNudgeExpenseValue(expenseId, delta) {
+const expenses = getCurrentMonthExpenses();
+const exp = expenses.find(e => e.id === expenseId);
+if (!exp) return;
+exp.amount = Math.max(5, Number(exp.amount || 0) + delta);
+saveState();
+if (state.activeModalCatId) {
+renderCategoryModalHistoryList(state.activeModalCatId);
+const cat = state.categories.find(c => c.id === state.activeModalCatId);
+const updatedTotal = getCurrentMonthExpenses().filter(x => x.catId === state.activeModalCatId).reduce((a, b) => a + Number(b.amount || 0), 0);
+document.getElementById('catModalSubtitle').textContent = `סה"כ החודש: ${formatILS(updatedTotal)} מתוך יעד של ${formatILS(cat.budget)}`;
+}
+renderAll();
+}
+function saveCategoryTargetFromModal() {
+const cat = state.categories.find(c => c.id === state.activeModalCatId);
+if (!cat) return;
+const newTarget = Math.max(0, Number(document.getElementById('catModalTargetInput').value) || 0);
+cat.budget = newTarget;
+saveState();
+renderAll();
+const updatedTotal = getCurrentMonthExpenses().filter(x => x.catId === cat.id).reduce((a, b) => a + Number(b.amount || 0), 0);
+document.getElementById('catModalSubtitle').textContent = `סה"כ החודש: ${formatILS(updatedTotal)} מתוך יעד של ${formatILS(cat.budget)}`;
+showToast(`יעד הקטגוריה "${cat.name}" עודכן ל-${formatILS(newTarget)}`, 'success');
+}
+function setCategoryTargetToHistoricalAvg() {
+const catId = state.activeModalCatId;
+if (!catId) return;
+const model = runLongitudinalLearningModel();
+const st = model.categoryStats[catId];
+if (st && st.historicalAvg > 0) {
+document.getElementById('catModalTargetInput').value = st.historicalAvg;
+saveCategoryTargetFromModal();
+} else {
+showToast('אין מספיק היסטוריה לחישוב ממוצע לקטגוריה זו', 'info');
+}
+}
+function deleteExpense(expenseId) {
+const key = getMonthKey();
+state.expensesByMonth[key] = (state.expensesByMonth[key] || []).filter(e => e.id !== expenseId);
+saveState();
+if (state.activeModalCatId) {
+renderCategoryModalHistoryList(state.activeModalCatId);
+}
+renderAll();
+showToast('ההוצאה נמחקה', 'info');
+}
+function openSimulatorModal() {
+const model = runLongitudinalLearningModel();
+state.simulatorDraftTargets = {};
+state.categories.filter(c => c.active).forEach(cat => {
+const st = model.categoryStats[cat.id];
+const baseline = Math.max(cat.budget, st ? st.currentSpent : 0);
+state.simulatorDraftTargets[cat.id] = {
+currentBaseline: baseline,
+newTarget: cat.budget
+};
+});
+renderSimulatorRows(model);
+updateSimulatorSummary();
+document.getElementById('simulatorModal').classList.remove('hidden');
+}
+function closeSimulatorModal() {
+document.getElementById('simulatorModal').classList.add('hidden');
+}
+function renderSimulatorRows(model) {
+const container = document.getElementById('simulatorRowsContainer');
+const activeCats = state.categories.filter(c => c.active);
+container.innerHTML = activeCats.map(cat => {
+const st = model.categoryStats[cat.id];
+const draft = state.simulatorDraftTargets[cat.id] || { currentBaseline: cat.budget, newTarget: cat.budget };
+const maxSlider = Math.max(3000, Math.round(draft.currentBaseline * 1.5));
+return `
+<div class="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/70 space-y-2">
+<div class="flex flex-wrap items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="text-xl">${cat.icon}</span>
+<div>
+<span class="text-xs sm:text-sm font-extrabold text-slate-900 dark:text-white">${cat.name}</span>
+<span class="text-[11px] text-slate-400 block font-num">
+הוצאה החודש: ${formatILS(st ? st.currentSpent : 0)} | ממוצע רב-חודשי: ${formatILS(st ? st.historicalAvg : 0)}
+</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs text-slate-400">ערך יעד מותאם:</span>
+<div class="relative w-28">
+<span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-xs font-bold text-indigo-600">₪</span>
+<input type="number" step="50" min="0" value="${draft.newTarget}"
+oninput="updateSimulatorItem('${cat.id}', this.value)"
+id="simInput_${cat.id}"
+class="w-full pr-6 pl-2 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-num font-extrabold text-xs sm:text-sm">
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<input type="range" min="0" max="${maxSlider}" step="25" value="${draft.newTarget}"
+oninput="updateSimulatorItem('${cat.id}', this.value)"
+id="simRange_${cat.id}"
+class="sim-slider w-full">
+</div>
+</div>
+`;
+}).join('');
+}
+function updateSimulatorItem(catId, val) {
+const num = Math.max(0, Number(val) || 0);
+if (state.simulatorDraftTargets[catId]) {
+state.simulatorDraftTargets[catId].newTarget = num;
+}
+const inputEl = document.getElementById(`simInput_${catId}`);
+const rangeEl = document.getElementById(`simRange_${catId}`);
+if (inputEl && Number(inputEl.value) !== num) inputEl.value = num;
+if (rangeEl && Number(rangeEl.value) !== num) rangeEl.value = num;
+updateSimulatorSummary();
+}
+function updateSimulatorSummary() {
+let totalBaseline = 0;
+let totalAdjusted = 0;
+Object.values(state.simulatorDraftTargets).forEach(item => {
+totalBaseline += item.currentBaseline;
+totalAdjusted += item.newTarget;
+});
+const monthlySavings = Math.max(0, totalBaseline - totalAdjusted);
+const yearlySavings = monthlySavings * 12;
+document.getElementById('simTotalAdjusted').textContent = formatILS(totalAdjusted);
+document.getElementById('simMonthlySavings').textContent = formatILS(monthlySavings);
+document.getElementById('simYearlySavings').textContent = formatILS(yearlySavings);
+}
+function optimizeSimulatorByModel() {
+const model = runLongitudinalLearningModel();
+state.categories.filter(c => c.active).forEach(cat => {
+const rec = model.recommendations.find(r => r.catId === cat.id);
+if (rec && state.simulatorDraftTargets[cat.id]) {
+updateSimulatorItem(cat.id, rec.recommendedBudget);
+}
+});
+showToast('הערכים בסימולטור הותאמו להמלצות המודל הלומד!', 'success');
+}
+function applySimulatorTargets() {
+let sumNewTargets = 0;
+state.categories.filter(c => c.active).forEach(cat => {
+const draft = state.simulatorDraftTargets[cat.id];
+if (draft) {
+cat.budget = draft.newTarget;
+sumNewTargets += draft.newTarget;
+}
+});
+state.overallBudget = sumNewTargets;
+saveState();
+closeSimulatorModal();
+renderAll();
+showToast('ערכי היעד והתקציב החודשי עודכנו בהצלחה!', 'success');
+}
+function renderDonutAndRatios() {
+const expenses = getCurrentMonthExpenses();
+const total = expenses.reduce((a, b) => a + Number(b.amount || 0), 0);
+document.getElementById('donutCenterTotal').textContent = formatILS(total);
+const svg = document.getElementById('donutSvg');
+const legend = document.getElementById('donutLegend');
+if (total <= 0) {
+svg.innerHTML = `<circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#e2e8f0" stroke-width="5"></circle>`;
+legend.innerHTML = `<p class="text-xs text-slate-400">אין הוצאות להצגה בחודש זה.</p>`;
+} else {
+const byCat = {};
+expenses.forEach(e => {
+byCat[e.catId] = (byCat[e.catId] || 0) + Number(e.amount || 0);
+});
+const entries = Object.entries(byCat)
+.map(([catId, amount]) => {
+const cat = state.categories.find(c => c.id === catId) || { name: 'אחר', icon: '📌', color: '#64748b' };
+return { cat, amount, pct: (amount / total) * 100 };
+})
+.sort((a, b) => b.amount - a.amount);
+let cumulativePct = 0;
+svg.innerHTML = entries.map(item => {
+const dashArray = `${item.pct} ${100 - item.pct}`;
+const dashOffset = 100 - cumulativePct;
+cumulativePct += item.pct;
+return `<circle cx="21" cy="21" r="15.915" fill="transparent" stroke="${item.cat.color}" stroke-width="5.5" stroke-dasharray="${dashArray}" stroke-dashoffset="${dashOffset}"></circle>`;
+}).join('');
+legend.innerHTML = entries.map(item => `
+<div onclick="openCategoryModal('${item.cat.id}')" class="flex items-center justify-between text-xs p-1.5 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 cursor-pointer">
+<div class="flex items-center gap-2 truncate">
+<span class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: ${item.cat.color}"></span>
+<span class="truncate font-semibold">${item.cat.icon} ${item.cat.name}</span>
+</div>
+<span class="font-num font-bold">${formatILS(item.amount)} (${Math.round(item.pct)}%)</span>
+</div>
+`).join('');
+}
+// Fixed vs Variable ratio
+const fixedSum = expenses.filter(e => e.isFixed).reduce((a, b) => a + Number(b.amount || 0), 0);
+const varSum = total - fixedSum;
+const fixedPct = total > 0 ? Math.round((fixedSum / total) * 100) : 50;
+const varPct = total > 0 ? 100 - fixedPct : 50;
+document.getElementById('fixedExpensesLabel').textContent = `קבועות: ${formatILS(fixedSum)} (${fixedPct}%)`;
+document.getElementById('variableExpensesLabel').textContent = `משתנות: ${formatILS(varSum)} (${varPct}%)`;
+document.getElementById('fixedRatioBar').style.width = `${fixedPct}%`;
+document.getElementById('variableRatioBar').style.width = `${varPct}%`;
+}
+function populateCategoryFilterDropdown() {
+const select = document.getElementById('txCategoryFilter');
+const currentVal = select.value;
+select.innerHTML = `<option value="all">כל הקטגוריות</option>` + state.categories.map(c => `
+<option value="${c.id}">${c.icon} ${c.name}</option>
+`).join('');
+select.value = currentVal || 'all';
+}
+function renderTransactionsList() {
+const container = document.getElementById('transactionsListContainer');
+const search = (document.getElementById('txSearchInput').value || '').trim().toLowerCase();
+const catFilter = document.getElementById('txCategoryFilter').value;
+let list = [...getCurrentMonthExpenses()];
+if (catFilter && catFilter !== 'all') {
+list = list.filter(e => e.catId === catFilter);
+}
+if (search) {
+list = list.filter(e => {
+const cat = state.categories.find(c => c.id === e.catId);
+return (e.note || '').toLowerCase().includes(search) || (cat && cat.name.toLowerCase().includes(search));
+});
+}
+document.getElementById('txCountBadge').textContent = `${list.length} רשומות`;
+if (list.length === 0) {
+container.innerHTML = `<div class="text-center py-10 text-xs text-slate-400">לא נמצאו הוצאות תואמות בחודש זה.</div>`;
+return;
+}
+container.innerHTML = list.map(item => {
+const cat = state.categories.find(c => c.id === item.catId) || { name: 'כללי', icon: '📌', color: '#6366f1' };
+return `
+<div class="flex items-center justify-between p-3 rounded-2xl bg-slate-50/90 dark:bg-slate-800/50 border border-slate-200/70 dark:border-slate-800 hover:border-indigo-300 transition gap-2">
+<div onclick="openCategoryModal('${cat.id}', '${item.id}')" class="flex items-center gap-3 min-w-0 flex-1 cursor-pointer">
+<div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0" style="background-color: ${cat.color}18">
+${cat.icon}
+</div>
+<div class="min-w-0">
+<div class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">${item.note}</div>
+<div class="text-[11px] text-slate-400 flex items-center gap-2">
+<span>${cat.name}</span>
+<span class="font-num">• ${item.date || ''}</span>
+${item.isFixed ? '<span class="text-indigo-500 font-bold">• קבועה</span>' : ''}
+</div>
+</div>
+</div>
+<!-- Direct Value Adjustment Controls in Main Table -->
+<div class="flex items-center gap-1.5 shrink-0">
+<button onclick="quickNudgeExpenseValue('${item.id}', -25)" title="הפחת ₪25" class="w-6 h-6 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-rose-600 text-xs font-bold font-num flex items-center justify-center">-</button>
+<button onclick="openCategoryModal('${cat.id}', '${item.id}')" title="לחץ לשינוי הסכום" class="px-2.5 py-1 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 font-num font-extrabold text-xs sm:text-sm text-slate-900 dark:text-white hover:border-indigo-500 transition">
+${formatILS(item.amount)}
+</button>
+<button onclick="quickNudgeExpenseValue('${item.id}', 25)" title="הוסף ₪25" class="w-6 h-6 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-emerald-600 text-xs font-bold font-num flex items-center justify-center">+</button>
+<button onclick="openCategoryModal('${cat.id}', '${item.id}')" title="ערוך" class="w-7 h-7 rounded-lg text-slate-400 hover:text-indigo-600 flex items-center justify-center">
+<i class="ph-bold ph-pencil-simple"></i>
+</button>
+<button onclick="deleteExpense('${item.id}')" title="מחק" class="w-7 h-7 rounded-lg text-slate-400 hover:text-rose-600 flex items-center justify-center">
+<i class="ph-bold ph-trash"></i>
+</button>
+</div>
+</div>
+`;
+}).join('');
+}
+function handleQuickTextParse(e) {
+e.preventDefault();
+const input = document.getElementById('quickTextInput');
+const raw = input.value.trim();
+if (!raw) return;
+// Split by comma or "ו-"
+const segments = raw.split(/[,،]+|\s+ו(?=[א-ת]+\s*\d)/).map(s => s.trim()).filter(Boolean);
+let addedCount = 0;
+const keywordMap = [
+{ keywords: ['סופר', 'קניות', 'מכולת', 'ירקות', 'אוכל לבית', 'רמי לוי', 'שופרסל'], catId: 'groceries' },
+{ keywords: ['דלק', 'תדלוק', 'חניה', 'פנגו', 'סונול', 'פז', 'מנטה', 'yellow', 'YELLOW', 'דור אלון', 'דלק'], catId: 'fuel' },
+{ keywords: ['טיפול', 'מוסך', 'פרונט', 'צמיג', 'טסט', 'אוטודיפו'], catId: 'car_maint' },
+{ keywords: ['עמלה', 'עמלת'], catId: 'fees' },
+{ keywords: ['bit', 'BIT', 'ביט', 'העברה', 'מתנה'], catId: 'misc' },
+{ keywords: ['שכר דירה', 'שכירות', 'משכנתא'], catId: 'rent' },
+{ keywords: ['חשמל', 'ארנונה', 'מים', 'גז', 'ועד בית', 'חשבונות'], catId: 'bills' },
+{ keywords: ['ביטוח רכב', 'AIG', 'רישוי', 'ביטוח חובה'], catId: 'car_ins' },
+{ keywords: ['ביטוח בריאות', 'הראל', 'קופת חולים', 'תרופות', 'רופא'], catId: 'health_ins' },
+{ keywords: ['כושר', 'סטודיו', 'פילאטיס', 'אימון'], catId: 'gym' },
+{ keywords: ['מסעדה', 'בילויים', 'בילוי', 'וולט', 'משלוח', 'קפה', 'בר', 'סרט', 'פיצה', 'שמורה', 'טבע', 'גנים'], catId: 'fun' },
+{ keywords: ['בגדים', 'ביגוד', 'נעליים', 'אונליין', 'אמזון', 'עליאקספרס'], catId: 'shopping' },
+{ keywords: ['אינטרנט', 'סלולר', 'נטפליקס', 'תקשורת', 'google', 'Google', 'מנוי'], catId: 'comm' }
+];
+segments.forEach(seg => {
+const numMatch = seg.match(/(\d+(?:\.\d+)?)/);
+if (!numMatch) return;
+const amount = Number(numMatch[1]);
+if (amount <= 0) return;
+let matchedCatId = 'groceries';
+for (const rule of keywordMap) {
+if (rule.keywords.some(k => seg.includes(k))) {
+matchedCatId = rule.catId;
+break;
+}
+}
+// Activate category if hidden
+const cat = state.categories.find(c => c.id === matchedCatId);
+if (cat) cat.active = true;
+const cleanNote = seg.replace(numMatch[0], '').replace(/ש"ח|שח|₪/g, '').trim() || (cat ? cat.name : 'הוצאה');
+getCurrentMonthExpenses().unshift({
+id: 'exp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+catId: matchedCatId,
+amount,
+note: cleanNote,
+date: `${state.currentYear}-${String(state.currentMonth + 1).padStart(2, '0')}-14`,
+isFixed: seg.includes('קבוע')
+});
+addedCount++;
+});
+if (addedCount > 0) {
+input.value = '';
+saveState();
+renderAll();
+showToast(`נוספו ${addedCount} הוצאות אוטומטית מהטקסט!`, 'success');
+} else {
+showToast('לא זוהה סכום מספרי בטקסט (למשל: דלק 250)', 'error');
+}
+}
+function changeMonth(delta) {
+state.currentMonth += delta;
+if (state.currentMonth > 11) {
+state.currentMonth = 0;
+state.currentYear++;
+} else if (state.currentMonth < 0) {
+state.currentMonth = 11;
+state.currentYear--;
+}
+saveState();
+renderAll();
+}
+function jumpToMonthKey(monthKey) {
+const [y, m] = monthKey.split('-').map(Number);
+if (!y || !m) return;
+state.currentYear = y;
+state.currentMonth = m - 1;
+saveState();
+renderAll();
+showToast(`עברת לחודש ${HEBREW_MONTHS[state.currentMonth]} ${state.currentYear}`, 'info');
+}
+function copyFixedFromPrevMonth() {
+let prevM = state.currentMonth - 1;
+let prevY = state.currentYear;
+if (prevM < 0) { prevM = 11; prevY--; }
+const prevKey = getMonthKey(prevY, prevM);
+const prevExpenses = (state.expensesByMonth[prevKey] || []).filter(e => e.isFixed);
+if (prevExpenses.length === 0) {
+showToast('לא נמצאו הוצאות קבועות בחודש הקודם', 'info');
+return;
+}
+const currList = getCurrentMonthExpenses();
+let imported = 0;
+prevExpenses.forEach(pe => {
+const alreadyExists = currList.some(ce => ce.catId === pe.catId && ce.note === pe.note && ce.isFixed);
+if (!alreadyExists) {
+currList.push({
+id: 'exp_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+catId: pe.catId,
+amount: pe.amount,
+note: pe.note,
+date: `${state.currentYear}-${String(state.currentMonth + 1).padStart(2, '0')}-01`,
+isFixed: true
+});
+imported++;
+}
+});
+saveState();
+renderAll();
+showToast(imported > 0 ? `יובאו ${imported} הוצאות קבועות מהחודש הקודם` : 'כל ההוצאות הקבועות כבר קיימות החודש', 'success');
+}
+function renderEmojiPickerGrid(selectedEmoji = '✨') {
+const grid = document.getElementById('emojiPickerGrid');
+if (!grid) return;
+grid.innerHTML = CATEGORY_EMOJIS.map(emoji => {
+const isSelected = emoji === selectedEmoji;
+return `
+<button type="button" onclick="selectCategoryEmoji('${emoji}')"
+class="h-10 rounded-xl text-xl flex items-center justify-center transition ${
+isSelected
+? 'bg-indigo-600 text-white ring-2 ring-indigo-400 scale-105 shadow-sm'
+: 'bg-white dark:bg-slate-900 hover:bg-indigo-50 dark:hover:bg-slate-700 border border-slate-200/60 dark:border-slate-700'
+}">
+${emoji}
+</button>
+`;
+}).join('');
+}
+function selectCategoryEmoji(emoji) {
+const input = document.getElementById('newCatIcon');
+const preview = document.getElementById('newCatSelectedEmojiPreview');
+if (input) input.value = emoji;
+if (preview) preview.textContent = emoji;
+renderEmojiPickerGrid(emoji);
+}
+function syncCustomEmojiInput(val) {
+const clean = (val || '').trim() || '✨';
+const preview = document.getElementById('newCatSelectedEmojiPreview');
+if (preview) preview.textContent = clean;
+renderEmojiPickerGrid(clean);
+}
+function openNewCategoryModal() {
+document.getElementById('newCatName').value = '';
+document.getElementById('newCatBudget').value = '500';
+selectCategoryEmoji('✨');
+document.getElementById('newCategoryModal').classList.remove('hidden');
+}
+function closeNewCategoryModal() {
+document.getElementById('newCategoryModal').classList.add('hidden');
+}
+function handleCreateCategory(e) {
+e.preventDefault();
+const name = document.getElementById('newCatName').value.trim();
+const icon = document.getElementById('newCatIcon').value.trim() || '✨';
+const groupEl = document.getElementById('newCatGroup');
+const group = groupEl ? groupEl.value : 'מותאם אישית';
+const budget = Number(document.getElementById('newCatBudget').value) || 500;
+if (!name) return;
+const palette = ['#6366f1', '#10b981', '#f59e0b', '#ec4899', '#0ea5e9', '#8b5cf6', '#14b8a6', '#f43f5e'];
+const randomColor = palette[state.categories.length % palette.length];
+state.categories.push({
+id: 'custom_' + Date.now(),
+name,
+group,
+icon,
+color: randomColor,
+active: true,
+budget,
+isFixedDefault: false,
+suggestions: [name]
+});
+saveState();
+closeNewCategoryModal();
+renderAll();
+showToast(`הקטגוריה "${icon} ${name}" נוספה לסל!`, 'success');
+}
+function promptDeleteCategory(catId, event = null) {
+if (event) event.stopPropagation();
+const cat = state.categories.find(c => c.id === catId);
+if (!cat) return;
+state.pendingDeleteCatId = catId;
+document.getElementById('deleteCatModalIcon').textContent = cat.icon || '🗑️';
+document.getElementById('deleteCatModalText').innerHTML = `האם למחוק את הקטגוריה <strong>"${cat.name}"</strong> מרשימת הסל? כל ההוצאות המשויכות אליה יימחקו.`;
+document.getElementById('deleteCatModal').classList.remove('hidden');
+}
+function closeDeleteCatModal() {
+state.pendingDeleteCatId = null;
+document.getElementById('deleteCatModal').classList.add('hidden');
+}
+function confirmDeleteCategory() {
+const catId = state.pendingDeleteCatId;
+if (!catId) return;
+const cat = state.categories.find(c => c.id === catId);
+const catName = cat ? cat.name : 'הקטגוריה';
+// Remove category from state.categories
+state.categories = state.categories.filter(c => c.id !== catId);
+// Remove associated expenses across all months
+Object.keys(state.expensesByMonth).forEach(monthKey => {
+state.expensesByMonth[monthKey] = (state.expensesByMonth[monthKey] || []).filter(e => e.catId !== catId);
+});
+if (state.activeModalCatId === catId) {
+closeCategoryModal();
+}
+closeDeleteCatModal();
+saveState();
+renderAll();
+showToast(`הקטגוריה "${catName}" נמחקה מהרשימה`, 'info');
+}
+function openBudgetEditModal() {
+document.getElementById('overallBudgetInput').value = state.overallBudget;
+document.getElementById('budgetEditModal').classList.remove('hidden');
+}
+function closeBudgetEditModal() {
+document.getElementById('budgetEditModal').classList.add('hidden');
+}
+function syncOverallBudgetToCategoriesSum() {
+const sum = state.categories.filter(c => c.active).reduce((a, b) => a + Number(b.budget || 0), 0);
+document.getElementById('overallBudgetInput').value = sum;
+}
+function saveOverallBudget() {
+state.overallBudget = Math.max(0, Number(document.getElementById('overallBudgetInput').value) || 0);
+saveState();
+closeBudgetEditModal();
+renderAll();
+showToast(`התקציב החודשי עודכן ל-${formatILS(state.overallBudget)}`, 'success');
+}
+function openDemoResetModal() {
+document.getElementById('demoResetModal').classList.remove('hidden');
+}
+function closeDemoResetModal() {
+document.getElementById('demoResetModal').classList.add('hidden');
+}
+function restoreDemoData() {
+lastUpdatedAt = 0;
+closeDemoResetModal();
+pullFromCloud(true);
+showToast('טוען מחדש מהגיליון…', 'info');
+}
+function clearCurrentMonthExpenses() {
+state.expensesByMonth[getMonthKey()] = [];
+saveState();
+closeDemoResetModal();
+renderAll();
+showToast('הוצאות החודש הנוכחי אופסו', 'info');
+}
+function clearAllExpensesData() {
+state.expensesByMonth = {};
+saveState();
+closeDemoResetModal();
+renderAll();
+showToast('כל הנתונים אופסו בהצלחה', 'info');
+}
+function scrollToEfficiencySection() {
+document.getElementById('efficiencyEngineSection').scrollIntoView({ behavior: 'smooth' });
+}
+function exportToCSV() {
+const expenses = getCurrentMonthExpenses();
+if (expenses.length === 0) {
+showToast('אין הוצאות לייצוא בחודש זה', 'error');
+return;
+}
+const headers = ['תאריך', 'קטגוריה', 'תיאור', 'סכום בשח', 'סוג הוצאה'];
+const rows = expenses.map(e => {
+const cat = state.categories.find(c => c.id === e.catId);
+return [
+e.date || '',
+cat ? cat.name.replace(/,/g, ' ') : 'אחר',
+(e.note || '').replace(/,/g, ' '),
+e.amount,
+e.isFixed ? 'קבועה' : 'משתנה'
+].join(',');
+});
+const csvContent = '\uFEFF' + [headers.join(','), ...rows].join('\n');
+const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+const url = URL.createObjectURL(blob);
+const a = document.createElement('a');
+a.href = url;
+a.download = `הוצאות_${HEBREW_MONTHS[state.currentMonth]}_${state.currentYear}.csv`;
+a.click();
+URL.revokeObjectURL(url);
+showToast('הקובץ ירד בהצלחה (מותאם לאקסל בעברית)', 'success');
+}
+function toggleTheme() {
+const html = document.documentElement;
+html.classList.toggle('dark');
+const isDark = html.classList.contains('dark');
+document.getElementById('themeIcon').className = isDark ? 'ph-fill ph-sun text-lg text-amber-400' : 'ph-fill ph-moon text-lg';
+}
+function showToast(message, type = 'info') {
+const container = document.getElementById('toastContainer');
+const toast = document.createElement('div');
+const colors = {
+success: 'bg-emerald-600 text-white',
+error: 'bg-rose-600 text-white',
+info: 'bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900'
+};
+toast.className = `px-4 py-3 rounded-2xl shadow-lg text-xs sm:text-sm font-bold flex items-center gap-2 transition-all duration-300 ${colors[type] || colors.info}`;
+toast.innerHTML = `<i class="ph-bold ph-check-circle text-base"></i><span>${message}</span>`;
+container.appendChild(toast);
+setTimeout(() => {
+toast.style.opacity = '0';
+setTimeout(() => toast.remove(), 300);
+}, 3000);
+}
+window.addEventListener('DOMContentLoaded', () => {
+loadState();
+renderAll();
+setSyncBadge(HAS_CLOUD ? 'loading' : 'local');
+pullFromCloud(true);
+});
+</script>
+</body>
+</html>
