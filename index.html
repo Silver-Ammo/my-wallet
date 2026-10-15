@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-<script>try{var P=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(matchMedia('(pointer: coarse)').matches&&Math.min(screen.width,screen.height)<768);if(!P&&innerWidth>=900&&localStorage.getItem('wallet_view')!=='mobile'){location.replace('desktop.html'+location.hash)}}catch(e){}</script>
+<script>try{var P=/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)||(matchMedia('(pointer: coarse)').matches&&Math.min(screen.width,screen.height)<768);function R(u){var t=+(sessionStorage.getItem('wr')||0);if(Date.now()-t>5000){sessionStorage.setItem('wr',Date.now());location.replace(u+location.hash)}};if(!P&&innerWidth>=900&&localStorage.getItem('wallet_view')!=='mobile'){R('desktop.html')}}catch(e){}</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
